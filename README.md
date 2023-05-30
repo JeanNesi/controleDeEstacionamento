@@ -3,14 +3,14 @@
 ### Grupo B
 
 ### Integrantes:
-[@JeanNesi](https://github.com/JeanNesi)
-[@lucasrguidi](https://github.com/lucasrguidi)
-[@brsavii](https://github.com/brsavii)
-[@guirms](https://github.com/guirms)
-[@KauaLibrelato](https://github.com/KauaLibrelato)
-[@ozielsilveira](https://github.com/ozielsilveira)
-[@HenriqueSilva29](https://github.com/HenriqueSilva29)
-[@kauanlc1](https://github.com/kauanlc1)
+- [@JeanNesi](https://github.com/JeanNesi)
+- [@lucasrguidi](https://github.com/lucasrguidi)
+- [@brsavii](https://github.com/brsavii)
+- [@guirms](https://github.com/guirms)
+- [@KauaLibrelato](https://github.com/KauaLibrelato)
+- [@ozielsilveira](https://github.com/ozielsilveira)
+- [@HenriqueSilva29](https://github.com/HenriqueSilva29)
+- [@kauanlc1](https://github.com/kauanlc1)
 
 ### Modelo Físico:
 Utilizado https://dbdiagram.io/<br>
