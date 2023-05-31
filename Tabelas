@@ -1,0 +1,67 @@
+Table "Veiculos" {
+  "ID" INT [pk]
+  "Placa" VARCHAR(10)
+  "Modelo" VARCHAR(50)
+  "Cor" VARCHAR(20)
+  "DataEntrada" DATETIME
+  "DataSaida" DATETIME
+  "ClienteID" INT
+  "VagaID" INT
+}
+
+Table "Clientes" {
+  "ID" INT [pk]
+  "Nome" VARCHAR(100)
+  "Endereco" VARCHAR(200)
+  "Telefone" VARCHAR(20)
+  "UsuarioId" INT
+}
+
+Table "Usuarios" {
+  "ID" INT [pk]
+  "Email" VARCHAR(100)
+  "Senha" VARCHAR(200)
+  "Admin" BOOLEAN
+}
+
+Table "Estacionamento" {
+  "ID" INT [pk]
+  "NomeEstacionamento" VARCHAR(100)
+  "Endereco" VARCHAR(200)
+  "CapacidadeTotal" INT
+  "UsuarioId" INT
+}
+
+Table "Vagas" {
+  "ID" INT [pk]
+  "EstacionamentoID" INT
+  "NumeroVaga" INT
+  "Disponivel" BOOLEAN
+}
+
+Table "Endereço" {
+  "ID" INT [pk]
+  "EstacionamentoID" INT
+  "NumeroVaga" INT
+  "Disponivel" BOOLEAN
+}
+
+Table "VagasLog" {
+  "ID" INT [pk]
+  "EstacionamentoID" INT
+  "NumeroVaga" INT
+  "Disponivel" BOOLEAN
+}
+
+
+Ref:"Clientes"."ID" < "Veiculos"."ClienteID"
+
+Ref:"Vagas"."ID" < "Veiculos"."VagaID"
+
+Ref:"Estacionamento"."ID" < "Vagas"."EstacionamentoID"
+
+Ref:"Usuarios"."ID" < "Estacionamento"."UsuarioId"
+
+Ref:"Usuarios"."ID" < "Clientes"."UsuarioId"
+
+Ref: "Usuarios"."ID" < "Usuarios"."Email"
