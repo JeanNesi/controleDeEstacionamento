@@ -24,6 +24,7 @@ model permissions {
   users          usersPermissions[]
 }
 
+//Maybe the table is not necessary.
 model subPermissions {
   id            String      @id @unique @default(uuid())
   name          String
@@ -71,37 +72,38 @@ model usersPermissions {
   user         users       @relation(fields: [userId], references: [id])
 }
 
-model parkingLot {
-  id          String         @id @unique @default(uuid())
-  name        String
-  capacity    Int
-  createdAt   DateTime       @default(now())
-  updatedAt   DateTime       @updatedAt
-  log         parkingLogs[]
-  reservation reservations[]
-}
+//The table is not necessary.
+//model parkingLot {
+//  id          String         @id @unique @default(uuid())
+//  name        String
+//  capacity    Int
+//  createdAt   DateTime       @default(now())
+//  updatedAt   DateTime       @updatedAt
+//  log         parkingLogs[]
+//  reservation reservations[]
+//}
 
 model reservations {
   id           String        @id @unique @default(uuid())
-  userId       String
-  parkingLotId String
+  userId       String 
+  licensePlate String //Add
   startTime    DateTime
   endTime      DateTime
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @updatedAt
-  parkingLog   parkingLogs[]
-  parking      parkingLot    @relation(fields: [parkingLotId], references: [id])
+  
   user         users         @relation(fields: [userId], references: [id])
 }
 
-model parkingLogs {
-  id            String       @id @unique @default(uuid())
-  parkingLotId  String
-  reservationId String
-  entryTime     DateTime
-  exitTime      DateTime
-  createdAt     DateTime     @default(now())
-  updatedAt     DateTime     @updatedAt
-  parking       parkingLot   @relation(fields: [parkingLotId], references: [id])
-  reservation   reservations @relation(fields: [reservationId], references: [id])
-}
+//The table is not necessary.
+//model parkingLogs {
+//  id            String       @id @unique @default(uuid())
+//  parkingLotId  String
+//  reservationId String
+//  entryTime     DateTime
+//  exitTime      DateTime
+//  createdAt     DateTime     @default(now())
+//  updatedAt     DateTime     @updatedAt
+//  parking       parkingLot   @relation(fields: [parkingLotId], references: [id])
+//  reservation   reservations @relation(fields: [reservationId], references: [id])
+//}
