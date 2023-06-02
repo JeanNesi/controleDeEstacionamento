@@ -1,0 +1,74 @@
+# https://editor.swagger.io/
+
+openapi: 3.0.0
+info:
+  title: Ada Logs Server API
+  description: Swagger API of Ada Logs Server.
+  version: '0.1'
+
+  contact:
+    name: 'Carlos Pasquali'
+    email: 'carlos.pasquali.dev@gmail.com'
+    url: 'https://carlospasqualidev.vercel.app/'
+
+servers:
+  - url: '{protocol}://localhost:8080/api'
+    description: Localhost API
+    variables:
+      protocol:
+        enum:
+          - http
+          - https
+        default: http
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    Error: # Can be referenced as $ref: '#/components/schemas/Error'
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+
+    Ok: # Can be referenced as $ref: '#/components/schemas/Ok'
+      type: object
+      properties:
+        object:
+          type: object
+        message:
+          type: string
+
+# security:
+#   - bearerAuth: []
+
+paths:
+  /login:
+    post:
+      tags:
+        - Auth
+      summary: login.
+      description: log in user account and return a access token.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+
+      responses:
+        '200':
+          $ref: '#/components/schemas/Ok'
+        '400':
+          $ref: '#/components/schemas/Error'

@@ -1,0 +1,107 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model tokens {
+  id        String   @id @unique @default(uuid())
+  token     String   @unique
+  hasUsed   Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model permissions {
+  id             String             @id @unique @default(uuid())
+  name           String             @unique
+  createdAt      DateTime           @default(now())
+  updatedAt      DateTime           @updatedAt
+  subPermissions subPermissions[]
+  users          usersPermissions[]
+}
+
+model subPermissions {
+  id            String      @id @unique @default(uuid())
+  name          String
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  permissionsId String
+  permissions   permissions @relation(fields: [permissionsId], references: [id])
+}
+
+model addresses {
+  id        String   @id @unique @default(uuid())
+  street    String
+  city      String
+  state     String
+  zipCode   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      users[]
+}
+
+model users {
+  id          String             @id @unique @default(uuid())
+  name        String
+  email       String             @unique
+  image       String?
+  isBlocked   Boolean            @default(false)
+  password    String
+  lastAccess  DateTime?
+  customUrl   String?
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+  addressId   String
+  reservation reservations[]
+  address     addresses          @relation(fields: [addressId], references: [id])
+  permissions usersPermissions[]
+}
+
+model usersPermissions {
+  id           String      @id @unique @default(uuid())
+  permissionId String
+  userId       String
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  permission   permissions @relation(fields: [permissionId], references: [id])
+  user         users       @relation(fields: [userId], references: [id])
+}
+
+model parkingLot {
+  id          String         @id @unique @default(uuid())
+  name        String
+  capacity    Int
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+  log         parkingLogs[]
+  reservation reservations[]
+}
+
+model reservations {
+  id           String        @id @unique @default(uuid())
+  userId       String
+  parkingLotId String
+  startTime    DateTime
+  endTime      DateTime
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  parkingLog   parkingLogs[]
+  parking      parkingLot    @relation(fields: [parkingLotId], references: [id])
+  user         users         @relation(fields: [userId], references: [id])
+}
+
+model parkingLogs {
+  id            String       @id @unique @default(uuid())
+  parkingLotId  String
+  reservationId String
+  entryTime     DateTime
+  exitTime      DateTime
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  parking       parkingLot   @relation(fields: [parkingLotId], references: [id])
+  reservation   reservations @relation(fields: [reservationId], references: [id])
+}
