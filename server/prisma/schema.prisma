@@ -24,7 +24,6 @@ model permissions {
   users          usersPermissions[]
 }
 
-//Maybe the table is not necessary.
 model subPermissions {
   id            String      @id @unique @default(uuid())
   name          String
@@ -72,38 +71,28 @@ model usersPermissions {
   user         users       @relation(fields: [userId], references: [id])
 }
 
-//The table is not necessary.
-//model parkingLot {
-//  id          String         @id @unique @default(uuid())
-//  name        String
-//  capacity    Int
-//  createdAt   DateTime       @default(now())
-//  updatedAt   DateTime       @updatedAt
-//  log         parkingLogs[]
-//  reservation reservations[]
-//}
-
 model reservations {
-  id           String        @id @unique @default(uuid())
-  userId       String 
-  licensePlate String //Add
-  startTime    DateTime
-  endTime      DateTime
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @updatedAt
-  
-  user         users         @relation(fields: [userId], references: [id])
+  id            String   @id @unique @default(uuid())
+  startTime     DateTime
+  endTime       DateTime
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  licensePlate  String
+
+  userId        String
+  user          users    @relation(fields: [userId], references: [id])
+
+  parkingId     String
+  parkig   parkigLot? @relation(fields: [parkingId], references: [id])
+
 }
 
-//The table is not necessary.
-//model parkingLogs {
-//  id            String       @id @unique @default(uuid())
-//  parkingLotId  String
-//  reservationId String
-//  entryTime     DateTime
-//  exitTime      DateTime
-//  createdAt     DateTime     @default(now())
-//  updatedAt     DateTime     @updatedAt
-//  parking       parkingLot   @relation(fields: [parkingLotId], references: [id])
-//  reservation   reservations @relation(fields: [reservationId], references: [id])
-//}
+model parkigLot {
+  id        String   @id @unique @default(uuid())
+  name      String
+  capacity  Int  
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  reservation reservations[]
+}
