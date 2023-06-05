@@ -1,0 +1,37 @@
+-- Table: public.reservations
+
+-- DROP TABLE IF EXISTS public.reservations;
+
+CREATE TABLE IF NOT EXISTS public.reservations
+(
+    id text COLLATE pg_catalog."default" NOT NULL,
+    "userId" text COLLATE pg_catalog."default" NOT NULL,
+    "startTime" timestamp(3) without time zone NOT NULL,
+    "endTime" timestamp(3) without time zone NOT NULL,
+    "createdAt" timestamp(3) without time zone NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" timestamp(3) without time zone NOT NULL,
+    "licensePlate" text COLLATE pg_catalog."default" NOT NULL,
+    "parkingId" text COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT reservations_pkey PRIMARY KEY (id),
+    CONSTRAINT "reservations_parkingId_fkey" FOREIGN KEY ("parkingId")
+        REFERENCES public."parkigLot" (id) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT,
+    CONSTRAINT "reservations_userId_fkey" FOREIGN KEY ("userId")
+        REFERENCES public.users (id) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.reservations
+    OWNER to avnadmin;
+-- Index: reservations_id_key
+
+-- DROP INDEX IF EXISTS public.reservations_id_key;
+
+CREATE UNIQUE INDEX IF NOT EXISTS reservations_id_key
+    ON public.reservations USING btree
+    (id COLLATE pg_catalog."default" ASC NULLS LAST)
+    TABLESPACE pg_default;

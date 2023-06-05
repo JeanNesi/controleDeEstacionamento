@@ -1,0 +1,26 @@
+-- Table: public.parkigLot
+
+-- DROP TABLE IF EXISTS public."parkigLot";
+
+CREATE TABLE IF NOT EXISTS public."parkigLot"
+(
+    id text COLLATE pg_catalog."default" NOT NULL,
+    name text COLLATE pg_catalog."default" NOT NULL,
+    capacity integer NOT NULL,
+    "createdAt" timestamp(3) without time zone NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" timestamp(3) without time zone NOT NULL,
+    CONSTRAINT "parkigLot_pkey" PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public."parkigLot"
+    OWNER to avnadmin;
+-- Index: parkigLot_id_key
+
+-- DROP INDEX IF EXISTS public."parkigLot_id_key";
+
+CREATE UNIQUE INDEX IF NOT EXISTS "parkigLot_id_key"
+    ON public."parkigLot" USING btree
+    (id COLLATE pg_catalog."default" ASC NULLS LAST)
+    TABLESPACE pg_default;

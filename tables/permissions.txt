@@ -1,0 +1,33 @@
+-- Table: public.permissions
+
+-- DROP TABLE IF EXISTS public.permissions;
+
+CREATE TABLE IF NOT EXISTS public.permissions
+(
+    id text COLLATE pg_catalog."default" NOT NULL,
+    name text COLLATE pg_catalog."default" NOT NULL,
+    "createdAt" timestamp(3) without time zone NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" timestamp(3) without time zone NOT NULL,
+    CONSTRAINT permissions_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.permissions
+    OWNER to avnadmin;
+-- Index: permissions_id_key
+
+-- DROP INDEX IF EXISTS public.permissions_id_key;
+
+CREATE UNIQUE INDEX IF NOT EXISTS permissions_id_key
+    ON public.permissions USING btree
+    (id COLLATE pg_catalog."default" ASC NULLS LAST)
+    TABLESPACE pg_default;
+-- Index: permissions_name_key
+
+-- DROP INDEX IF EXISTS public.permissions_name_key;
+
+CREATE UNIQUE INDEX IF NOT EXISTS permissions_name_key
+    ON public.permissions USING btree
+    (name COLLATE pg_catalog."default" ASC NULLS LAST)
+    TABLESPACE pg_default;

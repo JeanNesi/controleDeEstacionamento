@@ -1,0 +1,44 @@
+-- Table: public.users
+
+-- DROP TABLE IF EXISTS public.users;
+
+CREATE TABLE IF NOT EXISTS public.users
+(
+    id text COLLATE pg_catalog."default" NOT NULL,
+    name text COLLATE pg_catalog."default" NOT NULL,
+    email text COLLATE pg_catalog."default" NOT NULL,
+    image text COLLATE pg_catalog."default",
+    "isBlocked" boolean NOT NULL DEFAULT false,
+    password text COLLATE pg_catalog."default" NOT NULL,
+    "lastAccess" timestamp(3) without time zone,
+    "customUrl" text COLLATE pg_catalog."default",
+    "createdAt" timestamp(3) without time zone NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" timestamp(3) without time zone NOT NULL,
+    "addressId" text COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT users_pkey PRIMARY KEY (id),
+    CONSTRAINT "users_addressId_fkey" FOREIGN KEY ("addressId")
+        REFERENCES public.addresses (id) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.users
+    OWNER to avnadmin;
+-- Index: users_email_key
+
+-- DROP INDEX IF EXISTS public.users_email_key;
+
+CREATE UNIQUE INDEX IF NOT EXISTS users_email_key
+    ON public.users USING btree
+    (email COLLATE pg_catalog."default" ASC NULLS LAST)
+    TABLESPACE pg_default;
+-- Index: users_id_key
+
+-- DROP INDEX IF EXISTS public.users_id_key;
+
+CREATE UNIQUE INDEX IF NOT EXISTS users_id_key
+    ON public.users USING btree
+    (id COLLATE pg_catalog."default" ASC NULLS LAST)
+    TABLESPACE pg_default;
