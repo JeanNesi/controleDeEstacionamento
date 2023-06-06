@@ -14,6 +14,7 @@
 
 ### Modelo Físico:
 Utilizado https://dbdiagram.io/<br>
+<br>https://dbdiagram.io/d/647f7abe722eb77494814d1e</br>
 <code>![image](https://github.com/JeanNesi/controleDeEstacionamento/assets/102368879/148b102b-0069-4b2d-b67a-019775892510)</code>
   
 ### Dicionário de Dados:
