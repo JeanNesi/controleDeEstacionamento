@@ -1,17 +1,17 @@
 Table "addresses" {
   "id" UUID [pk, default: `uuid_generate_v4()`]
-  "street" VARCHAR(255)
-  "city" VARCHAR(255)
-  "state" VARCHAR(255)
-  "zipCode" VARCHAR(255)
+  "street" VARCHAR(50)
+  "city" VARCHAR(50)
+  "uf" CHAR(2)
+  "zipCode" CHAR(8)
   "createdAt" timestamp [default: `CURRENT_TIMESTAMP`]
   "updatedAt" timestamp
 }
 
 Table "users" {
   "id" UUID [pk, default: `uuid_generate_v4()`]
-  "name" VARCHAR(255)
-  "email" VARCHAR(255) [unique]
+  "name" VARCHAR(100) 
+  "email" VARCHAR(50) [unique]
   "password" VARCHAR(255)
   "lastAccess" timestamp
   "createdAt" timestamp [default: `CURRENT_TIMESTAMP`]
@@ -32,7 +32,7 @@ Table "reservations" {
 
 Table "parkigLot" {
   "id" UUID [pk, default: `uuid_generate_v4()`]
-  "name" VARCHAR(255)
+  "name" VARCHAR(100)
   "capacity" INT
   "createdAt" timestamp [default: `CURRENT_TIMESTAMP`]
   "updatedAt" timestamp
@@ -52,12 +52,11 @@ TABLE "clients" {
   "id" UUID [pk, default: `uuid_generate_v4()`]
   "userId" UUID
   "planId" UUID
-  "name" VARCHAR(255)
-  "email" VARCHAR(255) [unique]
-  "phoneNumber" VARCHAR(255)
-  "cpf" VARCHAR(255) [unique]
-  "gender" VARCHAR(255)
-  "activePlan" BIT
+  "name" VARCHAR(100)
+  "email" VARCHAR(50) [unique]
+  "phoneNumber" VARCHAR(15)
+  "cpf" CHAR(11) [unique]
+  "gender" VARCHAR(20)
   "birthDate" timestamp 
   "createdAt" timestamp [default: `CURRENT_TIMESTAMP`]
   "updatedAt" timestamp
@@ -67,8 +66,8 @@ TABLE "vehicles" {
   "id" UUID [pk, default: `uuid_generate_v4()`]
   "clientId" UUID
   "planId" UUID
-  "name" VARCHAR(255)
-  "plate" VARCHAR(255)
+  "name" VARCHAR(100)
+  "plate" CHAR(7)
   "createdAt" timestamp [default: `CURRENT_TIMESTAMP`]
   "updatedAt" timestamp
 }
@@ -84,6 +83,7 @@ TABLE "clients_vehicles" {
 TABLE "plans" {
   "id" UUID [pk, default: `uuid_generate_v4()`]
   "amount" DECIMAL(10, 2)
+  "finalDate" timestamp
   "createdAt" timestamp [default: `CURRENT_TIMESTAMP`]
   "updatedAt" timestamp
 }
