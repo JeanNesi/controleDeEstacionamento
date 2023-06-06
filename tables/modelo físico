@@ -1,0 +1,113 @@
+Table "addresses" {
+  "id" UUID [pk, default: `uuid_generate_v4()`]
+  "street" VARCHAR(255)
+  "city" VARCHAR(255)
+  "state" VARCHAR(255)
+  "zipCode" VARCHAR(255)
+  "createdAt" timestamp [default: `CURRENT_TIMESTAMP`]
+  "updatedAt" timestamp
+}
+
+Table "users" {
+  "id" UUID [pk, default: `uuid_generate_v4()`]
+  "name" VARCHAR(255)
+  "email" VARCHAR(255) [unique]
+  "password" VARCHAR(255)
+  "lastAccess" timestamp
+  "createdAt" timestamp [default: `CURRENT_TIMESTAMP`]
+  "updatedAt" timestamp
+  "addressId" UUID
+}
+
+Table "reservations" {
+  "id" UUID [pk, default: `uuid_generate_v4()`]
+  "startTime" timestamp
+  "endTime" timestamp
+  "createdAt" timestamp [default: `CURRENT_TIMESTAMP`]
+  "updatedAt" timestamp
+  "vehicleId" UUID
+  "userId" UUID
+  "parkingId" UUID
+}
+
+Table "parkigLot" {
+  "id" UUID [pk, default: `uuid_generate_v4()`]
+  "name" VARCHAR(255)
+  "capacity" INT
+  "createdAt" timestamp [default: `CURRENT_TIMESTAMP`]
+  "updatedAt" timestamp
+}
+
+Table "payments" {
+  "id" UUID [pk, default: `uuid_generate_v4()`]
+  "amount" DECIMAL(10, 2)
+  "paymentDate" timestamp 
+  "userId" UUID
+  "reservationId" UUID
+  "createdAt" timestamp [default: `CURRENT_TIMESTAMP`]
+  "updatedAt" timestamp
+}
+
+TABLE "clients" {
+  "id" UUID [pk, default: `uuid_generate_v4()`]
+  "userId" UUID
+  "planId" UUID
+  "name" VARCHAR(255)
+  "email" VARCHAR(255) [unique]
+  "phoneNumber" VARCHAR(255)
+  "cpf" VARCHAR(255) [unique]
+  "gender" VARCHAR(255)
+  "activePlan" BIT
+  "birthDate" timestamp 
+  "createdAt" timestamp [default: `CURRENT_TIMESTAMP`]
+  "updatedAt" timestamp
+}
+
+TABLE "vehicles" {
+  "id" UUID [pk, default: `uuid_generate_v4()`]
+  "clientId" UUID
+  "planId" UUID
+  "name" VARCHAR(255)
+  "plate" VARCHAR(255)
+  "createdAt" timestamp [default: `CURRENT_TIMESTAMP`]
+  "updatedAt" timestamp
+}
+
+TABLE "clients_vehicles" {
+  "id" UUID [pk, default: `uuid_generate_v4()`]
+  "clientId" UUID
+  "vehicleId" UUID
+  "createdAt" timestamp [default: `CURRENT_TIMESTAMP`]
+  "updatedAt" timestamp
+}
+
+TABLE "plans" {
+  "id" UUID [pk, default: `uuid_generate_v4()`]
+  "amount" DECIMAL(10, 2)
+  "createdAt" timestamp [default: `CURRENT_TIMESTAMP`]
+  "updatedAt" timestamp
+}
+
+
+Ref:"addresses"."id" < "users"."addressId"
+
+Ref:"users"."id" < "reservations"."userId"
+
+Ref:"parkigLot"."id" < "reservations"."parkingId"
+
+Ref: "users"."id" < "payments"."userId"
+
+Ref:"reservations"."id" < "payments"."reservationId"
+
+Ref: "users"."id" < "clients"."userId"
+
+Ref: "vehicles"."id" < "reservations"."vehicleId"
+
+Ref: "vehicles"."id" < "clients_vehicles"."vehicleId"
+
+Ref: "clients"."id" < "clients_vehicles"."clientId"
+
+Ref: "plans"."id" < "vehicles"."planId"
+
+
+
