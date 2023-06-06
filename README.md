@@ -14,8 +14,8 @@
 
 ### Modelo Físico:
 Utilizado https://dbdiagram.io/<br>
-Arquivo fonte: <code>link pro arquivo</code><br>
-<code>Imagem</code>
+<br>https://dbdiagram.io/d/647f7abe722eb77494814d1e</br>
+<code>![image](https://github.com/JeanNesi/controleDeEstacionamento/assets/102368879/148b102b-0069-4b2d-b67a-019775892510)</code>
   
 ### Dicionário de Dados:
 <code>Excel ou tabela do Github (markdown)</code>
