@@ -1,0 +1,18 @@
+-- Inserir dados na tabela "payments"
+INSERT INTO payments (id, amount, paymentDate, userId, reservationId, createdAt, updatedAt)
+VALUES
+  ('bd3eeac3-5a83-47ff-89f9-37aaf0129f82', 25.00, '2023-06-07', 'a3ae17ef-c5e5-44e1-99a9-6a5f5a309212', 'c3df564e-aa41-4d53-8a9b-61cc715df0da', CURRENT_TIMESTAMP, NULL),
+  ('a84b67df-6a60-47b9-9d4f-715ac5e295fe', 30.00, '2023-06-07', '1d598361-7f5e-44cc-8e7b-51c43906cead', '9e27f684-00a0-405f-90c0-cf0fd4d7a5e0', CURRENT_TIMESTAMP, NULL),
+  ('d4b3d3c8-aeae-4b4f-84bc-77518b7e55d4', 20.00, '2023-06-07', 'db2cbe27-4a23-4ee9-b46f-1e1f70c337f0', 'f9a7fcaa-0be0-43b5-890a-dad7522d3724', CURRENT_TIMESTAMP, NULL),
+  ('f764db4a-81e3-4ad6-8be6-8b462d665287', 35.00, '2023-06-07', 'ba74d97c-3c52-4f32-85ad-7346d519c9cc', 'e78b1905-5d75-4b59-bce4-67e4d7c5b4e1', CURRENT_TIMESTAMP, NULL),
+  ('0c5a881a-fa11-45d4-8258-8e21a8d307b3', 28.00, '2023-06-07', '32fb6ff6-86e6-4f41-8a8e-2f79c2a88c59', '2e8ad7e3-d7b6-4d4e-9c84-0f73bb299e61', CURRENT_TIMESTAMP, NULL);
+
+
+
+
+
+
+
+
+
+

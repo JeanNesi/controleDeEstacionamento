@@ -1,0 +1,90 @@
+-- Inserir dados na tabela "addresses"
+INSERT INTO addresses (id, street, city, uf, zipCode, createdAt, updatedAt)
+VALUES
+  ('3dcee5c3-16e3-4be4-a8e4-0fb0c2a4e13c', 'Rua Alegria', 'São Paulo', 'SP', '01234-567', CURRENT_TIMESTAMP, NULL),
+  ('fd5b7c1f-12c9-4fd7-9c5c-4eb228a8c456', 'Rua Barra de São João', 'São Paulo', 'SP', '02040-070', CURRENT_TIMESTAMP, NULL),
+  ('8b4c1c27-73fb-4a67-a8cd-ff77e96fc0e9', 'Rua São Boaventura', 'São Paulo', 'SP', '80000-456', CURRENT_TIMESTAMP, NULL),
+  ('2aa869c4-4d6a-4030-b2c7-50e6be8d8579', 'Avenida Paulista', 'São Paulo', 'SP', '01333-999', CURRENT_TIMESTAMP, NULL),
+  ('95e6b1ce-0495-4b6d-9f62-9c5e9cc6a7a3', 'Viela São Paulo', 'São Paulo', 'SP', '88000-001', CURRENT_TIMESTAMP, NULL);
+
+-- Inserir dados na tabela "users"
+INSERT INTO users (id, name, email, password, lastAccess, createdAt, updatedAt, addressId)
+VALUES
+  ('a3ae17ef-c5e5-44e1-99a9-6a5f5a309212', 'João Silva', 'joao.silva@email.com', 'senha123', NULL, CURRENT_TIMESTAMP, NULL, '3dcee5c3-16e3-4be4-a8e4-0fb0c2a4e13c'),
+  ('1d598361-7f5e-44cc-8e7b-51c43906cead', 'Maria Santos', 'maria.santos@email.com', 'senha456', NULL, CURRENT_TIMESTAMP, NULL, 'fd5b7c1f-12c9-4fd7-9c5c-4eb228a8c456'),
+  ('db2cbe27-4a23-4ee9-b46f-1e1f70c337f0', 'Pedro Oliveira', 'pedro.oliveira@email.com', 'senha789', NULL, CURRENT_TIMESTAMP, NULL, '8b4c1c27-73fb-4a67-a8cd-ff77e96fc0e9'),
+  ('ba74d97c-3c52-4f32-85ad-7346d519c9cc', 'Ana Rodrigues', 'ana.rodrigues@email.com', 'senha321', NULL, CURRENT_TIMESTAMP, NULL, '2aa869c4-4d6a-4030-b2c7-50e6be8d8579'),
+  ('32fb6ff6-86e6-4f41-8a8e-2f79c2a88c59', 'Lucas Souza', 'lucas.souza@exaemailmemailple.com', 'senha654', NULL, CURRENT_TIMESTAMP, NULL, '95e6b1ce-0495-4b6d-9f62-9c5e9cc6a7a3');
+
+-- Inserir dados na tabela "plans"
+INSERT INTO plans (id, amount, finalDate, createdAt, updatedAt)
+VALUES
+  ('d725bf63-41a8-4d2a-8c07-fc6efdbb4d92', 100.00, '2023-12-31', CURRENT_TIMESTAMP, NULL),
+  ('93f8a098-3a74-45d4-bd8a-e5e08e5244ce', 80.00, '2023-12-31', CURRENT_TIMESTAMP, NULL),
+  ('b55c1d41-2e92-4fd2-92d7-11d1289010f9', 120.00, '2023-12-31', CURRENT_TIMESTAMP, NULL),
+  ('f38e0ab1-9502-44d7-9d69-ae520e9ef60b', 90.00, '2023-12-31', CURRENT_TIMESTAMP, NULL),
+  ('7e625e9e-c301-4f25-bb5e-06e1b5e0dc98', 110.00, '2023-12-31', CURRENT_TIMESTAMP, NULL);
+
+-- Inserir dados na tabela "clients"
+INSERT INTO clients (id, userId, planId, name, email, phoneNumber, cpf, gender, birthDate, createdAt, updatedAt)
+VALUES
+  ('4f3a34e0-8be4-4c8c-b648-2e4a81bb6dbd', 'a3ae17ef-c5e5-44e1-99a9-6a5f5a309212', 'd725bf63-41a8-4d2a-8c07-fc6efdbb4d92', 'Fulano de Tal', 'fulano@email.com', '(11) 98765-4321', '12345678901', 'Masculino', '1990-01-01', CURRENT_TIMESTAMP, NULL),
+  ('e9814a2b-01da-4a0c-b192-0a06f5dc607d', '1d598361-7f5e-44cc-8e7b-51c43906cead', '93f8a098-3a74-45d4-bd8a-e5e08e5244ce', 'Ciclana Souza', 'ciclana@email.com', '(21) 98765-4321', '98765432101', 'Feminino', '1995-05-10', CURRENT_TIMESTAMP, NULL),
+  ('f7511fa7-654b-40e9-a012-27c0a6852cb4', 'db2cbe27-4a23-4ee9-b46f-1e1f70c337f0', 'b55c1d41-2e92-4fd2-92d7-11d1289010f9', 'Beltrano Oliveira', 'beltrano@email.com', '(41) 98765-4321', '45678912301', 'Masculino', '1988-12-15', CURRENT_TIMESTAMP, NULL),
+  ('f3723bbf-2354-49a7-82c1-30bcbf5a7b16', 'ba74d97c-3c52-4f32-85ad-7346d519c9cc', 'f38e0ab1-9502-44d7-9d69-ae520e9ef60b', 'Ciclana Rodrigues', 'ciclana.rodrigues@email.com', '(48) 98765-4321', '65432198701', 'Feminino', '1992-09-20', CURRENT_TIMESTAMP, NULL),
+  ('b05e9245-0eae-4870-843d-62374e6a740f', '32fb6ff6-86e6-4f41-8a8e-2f79c2a88c59', '7e625e9e-c301-4f25-bb5e-06e1b5e0dc98', 'Fulano Souza', 'fulano.souza@email.com', '(51) 98765-4321', '78912345601', 'Masculino', '1998-06-25', CURRENT_TIMESTAMP, NULL);
+
+-- Inserir dados na tabela "vehicles"
+INSERT INTO vehicles (id, clientId, planId, name, plate, createdAt, updatedAt)
+VALUES
+  ('bf153ef7-baa9-4d8b-8a41-5c282e7e3b0e', '4f3a34e0-8be4-4c8c-b648-2e4a81bb6dbd', 'd725bf63-41a8-4d2a-8c07-fc6efdbb4d92', 'Celta', 'ABC1234', CURRENT_TIMESTAMP, NULL),
+  ('0b7a8911-f5eb-4ed9-95ae-4dc4c2006fd3', 'e9814a2b-01da-4a0c-b192-0a06f5dc607d', '93f8a098-3a74-45d4-bd8a-e5e08e5244ce', 'Corsa', 'DEF5678', CURRENT_TIMESTAMP, NULL),
+  ('57d7e1c9-22b1-4bce-97e2-b4ef9c4f4f26', 'f7511fa7-654b-40e9-a012-27c0a6852cb4', 'b55c1d41-2e92-4fd2-92d7-11d1289010f9', 'Gol', 'GHI9012', CURRENT_TIMESTAMP, NULL),
+  ('248a767e-fb11-40f1-9b95-9d3c2621c0ed', 'f3723bbf-2354-49a7-82c1-30bcbf5a7b16', 'f38e0ab1-9502-44d7-9d69-ae520e9ef60b', 'Sandero', 'JKL3456', CURRENT_TIMESTAMP, NULL),
+  ('3b365fa1-1534-4ae0-8ee1-582b6cc930ab', 'b05e9245-0eae-4870-843d-62374e6a740f', '7e625e9e-c301-4f25-bb5e-06e1b5e0dc98', 'Fox', 'MNO7890', CURRENT_TIMESTAMP, NULL);
+  
+ -- Inserir dados na tabela "clientsVehicles"
+INSERT INTO clientsVehicles (id, clientId, vehicleId, createdAt, updatedAt)
+VALUES
+  ('a9e72ee2-7f84-4ce5-aae6-89b58da11b59', '4f3a34e0-8be4-4c8c-b648-2e4a81bb6dbd', 'bf153ef7-baa9-4d8b-8a41-5c282e7e3b0e', CURRENT_TIMESTAMP, NULL),
+  ('7b0e80b1-29b9-487b-af51-cb8da87a2d24', 'e9814a2b-01da-4a0c-b192-0a06f5dc607d', '0b7a8911-f5eb-4ed9-95ae-4dc4c2006fd3', CURRENT_TIMESTAMP, NULL),
+  ('99f2a460-9c55-45a6-bf7c-7e97df267ad5', 'f7511fa7-654b-40e9-a012-27c0a6852cb4', '57d7e1c9-22b1-4bce-97e2-b4ef9c4f4f26', CURRENT_TIMESTAMP, NULL),
+  ('8b56fe85-4ce7-4f0e-97c5-2f30e680df07', 'f3723bbf-2354-49a7-82c1-30bcbf5a7b16', '248a767e-fb11-40f1-9b95-9d3c2621c0ed', CURRENT_TIMESTAMP, NULL),
+  ('9e789d44-6c54-4e79-9297-eebf6ef9c7d7', 'b05e9245-0eae-4870-843d-62374e6a740f', '3b365fa1-1534-4ae0-8ee1-582b6cc930ab', CURRENT_TIMESTAMP, NULL);
+  
+-- Inserir dados na tabela "parkingLott"
+INSERT INTO parkingLott (id, name, amountPerHour, capacity, createdAt, updatedAt)
+VALUES
+  ('4a5f37fb-2c0a-4e65-a536-3b2124785b09', 'Estacionamento Central', 8.75, 80, CURRENT_TIMESTAMP, NULL),
+  ('6d631da0-7d5e-497f-8c2e-37ee873ec477', 'Estacionamento Norte', 12.00, 120, CURRENT_TIMESTAMP, NULL),
+  ('1801be82-fbd1-4f6f-a4d2-28cdd48eef85', 'Estacionamento Sul', 9.25, 70, CURRENT_TIMESTAMP, NULL),
+  ('88eb85e5-9fa3-4389-9b92-3e83c5d73ef1', 'Estacionamento Oeste', 11.00, 90, CURRENT_TIMESTAMP, NULL),
+  ('960fe06c-7e8f-4b82-af9a-cf927fbaf4a9', 'Estacionamento Leste', 10.50, 100, CURRENT_TIMESTAMP, NULL);
+  
+-- Inserir dados na tabela "reservations"
+INSERT INTO reservations (id, startTime, endTime, createdAt, updatedAt, vehicleId, userId, parkingId)
+VALUES
+  ('c3df564e-aa41-4d53-8a9b-61cc715df0da', '2023-06-07 10:00:00', '2023-06-07 12:00:00', CURRENT_TIMESTAMP, NULL, 'bf153ef7-baa9-4d8b-8a41-5c282e7e3b0e', 'a3ae17ef-c5e5-44e1-99a9-6a5f5a309212', '4a5f37fb-2c0a-4e65-a536-3b2124785b09'),
+  ('9e27f684-00a0-405f-90c0-cf0fd4d7a5e0', '2023-06-07 14:00:00', '2023-06-07 16:00:00', CURRENT_TIMESTAMP, NULL, '0b7a8911-f5eb-4ed9-95ae-4dc4c2006fd3', '1d598361-7f5e-44cc-8e7b-51c43906cead', '6d631da0-7d5e-497f-8c2e-37ee873ec477'),
+  ('f9a7fcaa-0be0-43b5-890a-dad7522d3724', '2023-06-07 09:00:00', '2023-06-07 11:00:00', CURRENT_TIMESTAMP, NULL, '57d7e1c9-22b1-4bce-97e2-b4ef9c4f4f26', 'db2cbe27-4a23-4ee9-b46f-1e1f70c337f0', '1801be82-fbd1-4f6f-a4d2-28cdd48eef85'),
+  ('e78b1905-5d75-4b59-bce4-67e4d7c5b4e1', '2023-06-07 13:00:00', '2023-06-07 15:00:00', CURRENT_TIMESTAMP, NULL, '248a767e-fb11-40f1-9b95-9d3c2621c0ed', 'ba74d97c-3c52-4f32-85ad-7346d519c9cc', '88eb85e5-9fa3-4389-9b92-3e83c5d73ef1'),
+  ('2e8ad7e3-d7b6-4d4e-9c84-0f73bb299e61', '2023-06-07 11:00:00', '2023-06-07 13:00:00', CURRENT_TIMESTAMP, NULL, '3b365fa1-1534-4ae0-8ee1-582b6cc930ab', '32fb6ff6-86e6-4f41-8a8e-2f79c2a88c59', '960fe06c-7e8f-4b82-af9a-cf927fbaf4a9');
+
+-- Inserir dados na tabela "payments"
+INSERT INTO payments (id, amount, paymentDate, userId, reservationId, createdAt, updatedAt)
+VALUES
+  ('bd3eeac3-5a83-47ff-89f9-37aaf0129f82', 25.00, '2023-06-07', 'a3ae17ef-c5e5-44e1-99a9-6a5f5a309212', 'c3df564e-aa41-4d53-8a9b-61cc715df0da', CURRENT_TIMESTAMP, NULL),
+  ('a84b67df-6a60-47b9-9d4f-715ac5e295fe', 30.00, '2023-06-07', '1d598361-7f5e-44cc-8e7b-51c43906cead', '9e27f684-00a0-405f-90c0-cf0fd4d7a5e0', CURRENT_TIMESTAMP, NULL),
+  ('d4b3d3c8-aeae-4b4f-84bc-77518b7e55d4', 20.00, '2023-06-07', 'db2cbe27-4a23-4ee9-b46f-1e1f70c337f0', 'f9a7fcaa-0be0-43b5-890a-dad7522d3724', CURRENT_TIMESTAMP, NULL),
+  ('f764db4a-81e3-4ad6-8be6-8b462d665287', 35.00, '2023-06-07', 'ba74d97c-3c52-4f32-85ad-7346d519c9cc', 'e78b1905-5d75-4b59-bce4-67e4d7c5b4e1', CURRENT_TIMESTAMP, NULL),
+  ('0c5a881a-fa11-45d4-8258-8e21a8d307b3', 28.00, '2023-06-07', '32fb6ff6-86e6-4f41-8a8e-2f79c2a88c59', '2e8ad7e3-d7b6-4d4e-9c84-0f73bb299e61', CURRENT_TIMESTAMP, NULL);
+
+
+
+
+
+
+
+
+
+

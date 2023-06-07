@@ -1,0 +1,17 @@
+-- Inserir dados na tabela "parkingLott"
+INSERT INTO parkingLott (id, name, amountPerHour, capacity, createdAt, updatedAt)
+VALUES
+  ('4a5f37fb-2c0a-4e65-a536-3b2124785b09', 'Estacionamento Central', 8.75, 80, CURRENT_TIMESTAMP, NULL),
+  ('6d631da0-7d5e-497f-8c2e-37ee873ec477', 'Estacionamento Norte', 12.00, 120, CURRENT_TIMESTAMP, NULL),
+  ('1801be82-fbd1-4f6f-a4d2-28cdd48eef85', 'Estacionamento Sul', 9.25, 70, CURRENT_TIMESTAMP, NULL),
+  ('88eb85e5-9fa3-4389-9b92-3e83c5d73ef1', 'Estacionamento Oeste', 11.00, 90, CURRENT_TIMESTAMP, NULL),
+  ('960fe06c-7e8f-4b82-af9a-cf927fbaf4a9', 'Estacionamento Leste', 10.50, 100, CURRENT_TIMESTAMP, NULL);
+  
+
+
+
+
+
+
+
+

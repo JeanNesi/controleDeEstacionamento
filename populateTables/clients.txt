@@ -1,0 +1,16 @@
+-- Inserir dados na tabela "clients"
+INSERT INTO clients (id, userId, planId, name, email, phoneNumber, cpf, gender, birthDate, createdAt, updatedAt)
+VALUES
+  ('4f3a34e0-8be4-4c8c-b648-2e4a81bb6dbd', 'a3ae17ef-c5e5-44e1-99a9-6a5f5a309212', 'd725bf63-41a8-4d2a-8c07-fc6efdbb4d92', 'Fulano de Tal', 'fulano@email.com', '(11) 98765-4321', '12345678901', 'Masculino', '1990-01-01', CURRENT_TIMESTAMP, NULL),
+  ('e9814a2b-01da-4a0c-b192-0a06f5dc607d', '1d598361-7f5e-44cc-8e7b-51c43906cead', '93f8a098-3a74-45d4-bd8a-e5e08e5244ce', 'Ciclana Souza', 'ciclana@email.com', '(21) 98765-4321', '98765432101', 'Feminino', '1995-05-10', CURRENT_TIMESTAMP, NULL),
+  ('f7511fa7-654b-40e9-a012-27c0a6852cb4', 'db2cbe27-4a23-4ee9-b46f-1e1f70c337f0', 'b55c1d41-2e92-4fd2-92d7-11d1289010f9', 'Beltrano Oliveira', 'beltrano@email.com', '(41) 98765-4321', '45678912301', 'Masculino', '1988-12-15', CURRENT_TIMESTAMP, NULL),
+  ('f3723bbf-2354-49a7-82c1-30bcbf5a7b16', 'ba74d97c-3c52-4f32-85ad-7346d519c9cc', 'f38e0ab1-9502-44d7-9d69-ae520e9ef60b', 'Ciclana Rodrigues', 'ciclana.rodrigues@email.com', '(48) 98765-4321', '65432198701', 'Feminino', '1992-09-20', CURRENT_TIMESTAMP, NULL),
+  ('b05e9245-0eae-4870-843d-62374e6a740f', '32fb6ff6-86e6-4f41-8a8e-2f79c2a88c59', '7e625e9e-c301-4f25-bb5e-06e1b5e0dc98', 'Fulano Souza', 'fulano.souza@email.com', '(51) 98765-4321', '78912345601', 'Masculino', '1998-06-25', CURRENT_TIMESTAMP, NULL);
+
+
+
+
+
+
+
+

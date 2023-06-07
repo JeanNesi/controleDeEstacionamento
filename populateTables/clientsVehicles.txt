@@ -1,0 +1,15 @@
+-- Inserir dados na tabela "clientsVehicles"
+INSERT INTO clientsVehicles (id, clientId, vehicleId, createdAt, updatedAt)
+VALUES
+  ('a9e72ee2-7f84-4ce5-aae6-89b58da11b59', '4f3a34e0-8be4-4c8c-b648-2e4a81bb6dbd', 'bf153ef7-baa9-4d8b-8a41-5c282e7e3b0e', CURRENT_TIMESTAMP, NULL),
+  ('7b0e80b1-29b9-487b-af51-cb8da87a2d24', 'e9814a2b-01da-4a0c-b192-0a06f5dc607d', '0b7a8911-f5eb-4ed9-95ae-4dc4c2006fd3', CURRENT_TIMESTAMP, NULL),
+  ('99f2a460-9c55-45a6-bf7c-7e97df267ad5', 'f7511fa7-654b-40e9-a012-27c0a6852cb4', '57d7e1c9-22b1-4bce-97e2-b4ef9c4f4f26', CURRENT_TIMESTAMP, NULL),
+  ('8b56fe85-4ce7-4f0e-97c5-2f30e680df07', 'f3723bbf-2354-49a7-82c1-30bcbf5a7b16', '248a767e-fb11-40f1-9b95-9d3c2621c0ed', CURRENT_TIMESTAMP, NULL),
+  ('9e789d44-6c54-4e79-9297-eebf6ef9c7d7', 'b05e9245-0eae-4870-843d-62374e6a740f', '3b365fa1-1534-4ae0-8ee1-582b6cc930ab', CURRENT_TIMESTAMP, NULL);
+  
+
+
+
+
+
+

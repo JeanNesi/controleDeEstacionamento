@@ -1,0 +1,14 @@
+-- Inserir dados na tabela "users"
+INSERT INTO users (id, name, email, password, lastAccess, createdAt, updatedAt, addressId)
+VALUES
+  ('a3ae17ef-c5e5-44e1-99a9-6a5f5a309212', 'João Silva', 'joao.silva@email.com', 'senha123', NULL, CURRENT_TIMESTAMP, NULL, '3dcee5c3-16e3-4be4-a8e4-0fb0c2a4e13c'),
+  ('1d598361-7f5e-44cc-8e7b-51c43906cead', 'Maria Santos', 'maria.santos@email.com', 'senha456', NULL, CURRENT_TIMESTAMP, NULL, 'fd5b7c1f-12c9-4fd7-9c5c-4eb228a8c456'),
+  ('db2cbe27-4a23-4ee9-b46f-1e1f70c337f0', 'Pedro Oliveira', 'pedro.oliveira@email.com', 'senha789', NULL, CURRENT_TIMESTAMP, NULL, '8b4c1c27-73fb-4a67-a8cd-ff77e96fc0e9'),
+  ('ba74d97c-3c52-4f32-85ad-7346d519c9cc', 'Ana Rodrigues', 'ana.rodrigues@email.com', 'senha321', NULL, CURRENT_TIMESTAMP, NULL, '2aa869c4-4d6a-4030-b2c7-50e6be8d8579'),
+  ('32fb6ff6-86e6-4f41-8a8e-2f79c2a88c59', 'Lucas Souza', 'lucas.souza@exaemailmemailple.com', 'senha654', NULL, CURRENT_TIMESTAMP, NULL, '95e6b1ce-0495-4b6d-9f62-9c5e9cc6a7a3');
+
+
+
+
+
+

@@ -1,0 +1,8 @@
+-- Inserir dados na tabela "addresses"
+INSERT INTO addresses (id, street, city, uf, zipCode, createdAt, updatedAt)
+VALUES
+  ('3dcee5c3-16e3-4be4-a8e4-0fb0c2a4e13c', 'Rua Alegria', 'São Paulo', 'SP', '01234-567', CURRENT_TIMESTAMP, NULL),
+  ('fd5b7c1f-12c9-4fd7-9c5c-4eb228a8c456', 'Rua Barra de São João', 'São Paulo', 'SP', '02040-070', CURRENT_TIMESTAMP, NULL),
+  ('8b4c1c27-73fb-4a67-a8cd-ff77e96fc0e9', 'Rua São Boaventura', 'São Paulo', 'SP', '80000-456', CURRENT_TIMESTAMP, NULL),
+  ('2aa869c4-4d6a-4030-b2c7-50e6be8d8579', 'Avenida Paulista', 'São Paulo', 'SP', '01333-999', CURRENT_TIMESTAMP, NULL),
+  ('95e6b1ce-0495-4b6d-9f62-9c5e9cc6a7a3', 'Viela São Paulo', 'São Paulo', 'SP', '88000-001', CURRENT_TIMESTAMP, NULL);
