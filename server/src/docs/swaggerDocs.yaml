@@ -48,27 +48,27 @@ components:
 # security:
 #   - bearerAuth: []
 
-paths:
-  /login:
-    post:
-      tags:
-        - Auth
-      summary: login.
-      description: log in user account and return a access token.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                password:
-                  type: string
+# paths:
+#   /login:
+#     post:
+#       tags:
+#         - Auth
+#       summary: login.
+#       description: log in user account and return a access token.
+#       requestBody:
+#         required: true
+#         content:
+#           application/json:
+#             schema:
+#               type: object
+#               properties:
+#                 email:
+#                   type: string                               
+#                 password:
+#                   type: string
 
-      responses:
-        '200':
-          $ref: '#/components/schemas/Ok'
-        '400':
-          $ref: '#/components/schemas/Error'
+#       responses:
+#         '200':
+#           $ref: '#/components/schemas/Ok'
+#         '400':
+#           $ref: '#/components/schemas/Error'

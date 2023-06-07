@@ -7,92 +7,114 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model tokens {
-  id        String   @id @unique @default(uuid())
-  token     String   @unique
-  hasUsed   Boolean  @default(false)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-model permissions {
-  id             String             @id @unique @default(uuid())
-  name           String             @unique
-  createdAt      DateTime           @default(now())
-  updatedAt      DateTime           @updatedAt
-  subPermissions subPermissions[]
-  users          usersPermissions[]
-}
-
-model subPermissions {
-  id            String      @id @unique @default(uuid())
-  name          String
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime    @updatedAt
-  permissionsId String
-  permissions   permissions @relation(fields: [permissionsId], references: [id])
-}
-
-model addresses {
-  id        String   @id @unique @default(uuid())
+model address {
+  id        String    @id @default(uuid())
   street    String
   city      String
-  state     String
+  uf        String
   zipCode   String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  user      users[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime?
+  users     user[]
 }
 
-model users {
-  id          String             @id @unique @default(uuid())
-  name        String
-  email       String             @unique
-  image       String?
-  isBlocked   Boolean            @default(false)
-  password    String
-  lastAccess  DateTime?
-  customUrl   String?
-  createdAt   DateTime           @default(now())
-  updatedAt   DateTime           @updatedAt
-  addressId   String
-  reservation reservations[]
-  address     addresses          @relation(fields: [addressId], references: [id])
-  permissions usersPermissions[]
+model user {
+  id           String        @id @default(uuid())
+  name         String
+  email        String        @unique
+  password     String
+  lastAccess   DateTime?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime?
+  addressId    String?
+  clients      client[]
+  payments     payment[]
+  reservations reservation[]
+  address      address?      @relation(fields: [addressId], references: [id])
 }
 
-model usersPermissions {
-  id           String      @id @unique @default(uuid())
-  permissionId String
-  userId       String
-  createdAt    DateTime    @default(now())
-  updatedAt    DateTime    @updatedAt
-  permission   permissions @relation(fields: [permissionId], references: [id])
-  user         users       @relation(fields: [userId], references: [id])
+model reservation {
+  id          String     @id @default(uuid())
+  startTime   DateTime
+  endTime     DateTime?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime?
+  vehicleId   String
+  userId      String
+  parkingId   String
+  payments    payment[]
+  parkingLott parkingLot @relation(fields: [parkingId], references: [id])
+  user        user       @relation(fields: [userId], references: [id])
+  vehicle     vehicle    @relation(fields: [vehicleId], references: [id])
 }
 
-model reservations {
-  id            String   @id @unique @default(uuid())
-  startTime     DateTime
-  endTime       DateTime
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-  licensePlate  String
+model parkingLot {
+  id            String        @id @default(uuid())
+  name          String
+  amountPerHour Float
+  capacity      Int
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime?
+  reservations  reservation[]
+}
 
+model payment {
+  id            String      @id @default(uuid())
+  amount        Float
+  paymentDate   DateTime?
   userId        String
-  user          users    @relation(fields: [userId], references: [id])
-
-  parkingId     String
-  parkig   parkigLot? @relation(fields: [parkingId], references: [id])
-
+  reservationId String
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime?
+  reservation   reservation @relation(fields: [reservationId], references: [id])
+  user          user        @relation(fields: [userId], references: [id])
 }
 
-model parkigLot {
-  id        String   @id @unique @default(uuid())
-  name      String
-  capacity  Int  
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime  @updatedAt
+model client {
+  id              String            @id @default(uuid())
+  userId          String
+  planId          String?
+  name            String
+  email           String            @unique
+  phoneNumber     String
+  cpf             String            @unique
+  gender          String?
+  birthDate       DateTime?
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime?
+  plan            plan?             @relation(fields: [planId], references: [id])
+  user            user              @relation(fields: [userId], references: [id])
+  clientsVehicles clientsVehicles[]
+  vehicles        vehicle[]
+}
 
-  reservation reservations[]
+model vehicle {
+  id              String            @id @default(uuid())
+  clientId        String
+  name            String
+  plate           String
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime?
+  clientsVehicles clientsVehicles[]
+  reservations    reservation[]
+  client          client            @relation(fields: [clientId], references: [id])
+}
+
+model clientsVehicles {
+  id        String    @id @default(uuid())
+  clientId  String
+  vehicleId String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime?
+  client    client    @relation(fields: [clientId], references: [id])
+  vehicle   vehicle   @relation(fields: [vehicleId], references: [id])
+}
+
+model plan {
+  id        String    @id @default(uuid())
+  amount    Float
+  finalDate DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime?
+  clients   client[]
 }
