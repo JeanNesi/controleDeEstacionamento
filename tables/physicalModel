@@ -30,9 +30,10 @@ Table "reservations" {
   "parkingId" UUID
 }
 
-Table "parkigLot" {
+Table "parkingLott" {
   "id" UUID [pk, default: `uuid_generate_v4()`]
   "name" VARCHAR(100)
+  "amountPerHour" DECIMAL(10, 2)
   "capacity" INT
   "createdAt" timestamp [default: `CURRENT_TIMESTAMP`]
   "updatedAt" timestamp
@@ -64,15 +65,15 @@ TABLE "clients" {
 
 TABLE "vehicles" {
   "id" UUID [pk, default: `uuid_generate_v4()`]
-  "clientId" UUID
-  "planId" UUID
+  "clientId" UUID 
+  "planId" UUID 
   "name" VARCHAR(100)
   "plate" CHAR(7)
   "createdAt" timestamp [default: `CURRENT_TIMESTAMP`]
   "updatedAt" timestamp
 }
 
-TABLE "clients_vehicles" {
+TABLE "clientsVehicles" {
   "id" UUID [pk, default: `uuid_generate_v4()`]
   "clientId" UUID
   "vehicleId" UUID
@@ -88,12 +89,11 @@ TABLE "plans" {
   "updatedAt" timestamp
 }
 
-
 Ref:"addresses"."id" < "users"."addressId"
 
 Ref:"users"."id" < "reservations"."userId"
 
-Ref:"parkigLot"."id" < "reservations"."parkingId"
+Ref:"parkingLott"."id" < "reservations"."parkingId"
 
 Ref: "users"."id" < "payments"."userId"
 
@@ -103,9 +103,9 @@ Ref: "users"."id" < "clients"."userId"
 
 Ref: "vehicles"."id" < "reservations"."vehicleId"
 
-Ref: "vehicles"."id" < "clients_vehicles"."vehicleId"
+Ref: "vehicles"."id" < "clientsVehicles"."vehicleId"
 
-Ref: "clients"."id" < "clients_vehicles"."clientId"
+Ref: "clients"."id" < "clientsVehicles"."clientId"
 
 Ref: "plans"."id" < "vehicles"."planId"
 
