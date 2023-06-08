@@ -43,7 +43,7 @@ Table "payments" {
   "id" UUID [pk, default: `uuid_generate_v4()`]
   "amount" DECIMAL(10, 2)
   "paymentDate" timestamp 
-  "userId" UUID
+  "clientId" UUID
   "reservationId" UUID
   "createdAt" timestamp [default: `CURRENT_TIMESTAMP`]
   "updatedAt" timestamp
@@ -95,7 +95,7 @@ Ref:"users"."id" < "reservations"."userId"
 
 Ref:"parkingLott"."id" < "reservations"."parkingId"
 
-Ref: "users"."id" < "payments"."userId"
+Ref: "clients"."id" < "payments"."clientId"
 
 Ref:"reservations"."id" < "payments"."reservationId"
 
@@ -108,6 +108,5 @@ Ref: "vehicles"."id" < "clientsVehicles"."vehicleId"
 Ref: "clients"."id" < "clientsVehicles"."clientId"
 
 Ref: "plans"."id" < "vehicles"."planId"
-
 
 
