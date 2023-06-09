@@ -19,18 +19,16 @@ model addresses {
 }
 
 model users {
-  id          String         @id @default(uuid())
-  name        String
-  email       String         @unique
-  password    String
-  lastAccess  DateTime?
-  createdAt   DateTime       @default(now())
-  updatedAt   DateTime?
-  addressId   String?
-  clients     clients[]
-  payments    payments[]
-  reservation reservations[]
-  address     addresses?     @relation(fields: [addressId], references: [id])
+  id         String     @id @default(uuid())
+  name       String
+  email      String     @unique
+  password   String
+  lastAccess DateTime?
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime?
+  addressId  String?
+  clients    clients[]
+  address    addresses? @relation(fields: [addressId], references: [id])
 }
 
 model reservations {
@@ -40,18 +38,18 @@ model reservations {
   createdAt DateTime   @default(now())
   updatedAt DateTime?
   vehicleId String
-  userId    String
   parkingId String
+  clientId  String?
   payments  payments[]
+  client    clients?   @relation(fields: [clientId], references: [id])
   parking   parkingLot @relation(fields: [parkingId], references: [id])
-  user      users      @relation(fields: [userId], references: [id])
   vehicle   vehicles   @relation(fields: [vehicleId], references: [id])
 }
 
 model parkingLot {
   id            String         @id @default(uuid())
   name          String
-  amountPerHour Float
+  amountPerHour Decimal        @db.Decimal(10, 2)
   capacity      Int
   createdAt     DateTime       @default(now())
   updatedAt     DateTime?
@@ -60,14 +58,14 @@ model parkingLot {
 
 model payments {
   id            String       @id @default(uuid())
-  amount        Float
+  amount        Decimal      @db.Decimal(10, 2)
   paymentDate   DateTime?
-  userId        String
   reservationId String
   createdAt     DateTime     @default(now())
   updatedAt     DateTime?
+  clientId      String?
+  client        clients?     @relation(fields: [clientId], references: [id])
   reservation   reservations @relation(fields: [reservationId], references: [id])
-  user          users        @relation(fields: [userId], references: [id])
 }
 
 model clients {
@@ -85,6 +83,8 @@ model clients {
   plan            plan?             @relation(fields: [planId], references: [id])
   user            users             @relation(fields: [userId], references: [id])
   clientsVehicles clientsVehicles[]
+  payment         payments[]
+  reservation     reservations[]
   vehicles        vehicles[]
 }
 
@@ -95,9 +95,11 @@ model vehicles {
   plate           String
   createdAt       DateTime          @default(now())
   updatedAt       DateTime?
+  planId          String?
   clientsVehicles clientsVehicles[]
   reservations    reservations[]
   client          clients           @relation(fields: [clientId], references: [id])
+  plan            plan?             @relation(fields: [planId], references: [id])
 }
 
 model clientsVehicles {
@@ -111,10 +113,11 @@ model clientsVehicles {
 }
 
 model plan {
-  id        String    @id @default(uuid())
-  amount    Decimal
+  id        String     @id @default(uuid())
+  amount    Decimal    @db.Decimal(10, 2)
   finalDate DateTime?
-  createdAt DateTime  @default(now())
+  createdAt DateTime   @default(now())
   updatedAt DateTime?
   clients   clients[]
+  vehicles  vehicles[]
 }
