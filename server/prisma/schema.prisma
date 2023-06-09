@@ -7,7 +7,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model address {
+model addresses {
   id        String    @id @default(uuid())
   street    String
   city      String
@@ -15,62 +15,62 @@ model address {
   zipCode   String
   createdAt DateTime  @default(now())
   updatedAt DateTime?
-  users     user[]
+  user      users[]
 }
 
-model user {
-  id           String        @id @default(uuid())
-  name         String
-  email        String        @unique
-  password     String
-  lastAccess   DateTime?
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime?
-  addressId    String?
-  clients      client[]
-  payments     payment[]
-  reservations reservation[]
-  address      address?      @relation(fields: [addressId], references: [id])
-}
-
-model reservation {
-  id          String     @id @default(uuid())
-  startTime   DateTime
-  endTime     DateTime?
-  createdAt   DateTime   @default(now())
+model users {
+  id          String         @id @default(uuid())
+  name        String
+  email       String         @unique
+  password    String
+  lastAccess  DateTime?
+  createdAt   DateTime       @default(now())
   updatedAt   DateTime?
-  vehicleId   String
-  userId      String
-  parkingId   String
-  payments    payment[]
-  parkingLott parkingLot @relation(fields: [parkingId], references: [id])
-  user        user       @relation(fields: [userId], references: [id])
-  vehicle     vehicle    @relation(fields: [vehicleId], references: [id])
+  addressId   String?
+  clients     clients[]
+  payments    payments[]
+  reservation reservations[]
+  address     addresses?     @relation(fields: [addressId], references: [id])
+}
+
+model reservations {
+  id        String     @id @default(uuid())
+  startTime DateTime
+  endTime   DateTime?
+  createdAt DateTime   @default(now())
+  updatedAt DateTime?
+  vehicleId String
+  userId    String
+  parkingId String
+  payments  payments[]
+  parking   parkingLot @relation(fields: [parkingId], references: [id])
+  user      users      @relation(fields: [userId], references: [id])
+  vehicle   vehicles   @relation(fields: [vehicleId], references: [id])
 }
 
 model parkingLot {
-  id            String        @id @default(uuid())
+  id            String         @id @default(uuid())
   name          String
   amountPerHour Float
   capacity      Int
-  createdAt     DateTime      @default(now())
+  createdAt     DateTime       @default(now())
   updatedAt     DateTime?
-  reservations  reservation[]
+  reservations  reservations[]
 }
 
-model payment {
-  id            String      @id @default(uuid())
+model payments {
+  id            String       @id @default(uuid())
   amount        Float
   paymentDate   DateTime?
   userId        String
   reservationId String
-  createdAt     DateTime    @default(now())
+  createdAt     DateTime     @default(now())
   updatedAt     DateTime?
-  reservation   reservation @relation(fields: [reservationId], references: [id])
-  user          user        @relation(fields: [userId], references: [id])
+  reservation   reservations @relation(fields: [reservationId], references: [id])
+  user          users        @relation(fields: [userId], references: [id])
 }
 
-model client {
+model clients {
   id              String            @id @default(uuid())
   userId          String
   planId          String?
@@ -83,12 +83,12 @@ model client {
   createdAt       DateTime          @default(now())
   updatedAt       DateTime?
   plan            plan?             @relation(fields: [planId], references: [id])
-  user            user              @relation(fields: [userId], references: [id])
+  user            users             @relation(fields: [userId], references: [id])
   clientsVehicles clientsVehicles[]
-  vehicles        vehicle[]
+  vehicles        vehicles[]
 }
 
-model vehicle {
+model vehicles {
   id              String            @id @default(uuid())
   clientId        String
   name            String
@@ -96,8 +96,8 @@ model vehicle {
   createdAt       DateTime          @default(now())
   updatedAt       DateTime?
   clientsVehicles clientsVehicles[]
-  reservations    reservation[]
-  client          client            @relation(fields: [clientId], references: [id])
+  reservations    reservations[]
+  client          clients           @relation(fields: [clientId], references: [id])
 }
 
 model clientsVehicles {
@@ -106,15 +106,15 @@ model clientsVehicles {
   vehicleId String
   createdAt DateTime  @default(now())
   updatedAt DateTime?
-  client    client    @relation(fields: [clientId], references: [id])
-  vehicle   vehicle   @relation(fields: [vehicleId], references: [id])
+  client    clients   @relation(fields: [clientId], references: [id])
+  vehicle   vehicles  @relation(fields: [vehicleId], references: [id])
 }
 
 model plan {
   id        String    @id @default(uuid())
-  amount    Float
+  amount    Decimal
   finalDate DateTime?
   createdAt DateTime  @default(now())
   updatedAt DateTime?
-  clients   client[]
+  clients   clients[]
 }
