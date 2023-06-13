@@ -68,6 +68,7 @@ TABLE "vehicles" {
   "clientId" UUID 
   "planId" UUID 
   "name" VARCHAR(100)
+  "type" BIT
   "plate" CHAR(7)
   "createdAt" timestamp [default: `CURRENT_TIMESTAMP`]
   "updatedAt" timestamp
@@ -108,5 +109,3 @@ Ref: "vehicles"."id" < "clientsVehicles"."vehicleId"
 Ref: "clients"."id" < "clientsVehicles"."clientId"
 
 Ref: "plans"."id" < "vehicles"."planId"
-
-
