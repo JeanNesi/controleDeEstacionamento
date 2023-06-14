@@ -84,6 +84,7 @@ TABLE "clientsVehicles" {
 
 TABLE "plans" {
   "id" UUID [pk, default: `uuid_generate_v4()`]
+  "name" VARCHAR(100)
   "amount" DECIMAL(10, 2)
   "finalDate" timestamp
   "createdAt" timestamp [default: `CURRENT_TIMESTAMP`]
