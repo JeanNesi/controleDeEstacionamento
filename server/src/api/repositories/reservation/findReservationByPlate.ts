@@ -4,21 +4,30 @@ export function findReservationByPLate(licensePlate: string) {
     return prisma.reservations.findMany({
         select: {
             id: true,
-            userId: true,
+            clientId: true,
             startTime: true,
             endTime: true,
             createdAt: true,
             updatedAt: true,
-            user: {
+            vehicleId: true,
+            client: {
                 select: {
                     id: true,
                     name: true,
                 }
+            },
+            vehicle: {
+                select: {
+                    id: true,
+                    name: true,
+                    plate: true,
+                }
             }
         },
         where: {
-            licensePlate: licensePlate.toLowerCase(),
-        },
-    },
-    );
+            vehicle: {
+                plate: licensePlate.toLocaleLowerCase(),
+            },
+        }
+    });
 }
