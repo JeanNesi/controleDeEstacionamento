@@ -2,7 +2,7 @@
 
 ### Grupo B
 
-### Integrantes:
+### Nome dos integrantes:
 - [@JeanNesi](https://github.com/JeanNesi)
 - [@lucasrguidi](https://github.com/lucasrguidi)
 - [@brsavii](https://github.com/brsavii)
