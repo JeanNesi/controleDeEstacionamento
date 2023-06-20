@@ -1,0 +1,28 @@
+-- Table: public.payments
+
+-- DROP TABLE IF EXISTS public.payments;
+
+CREATE TABLE IF NOT EXISTS public.payments
+(
+    id text COLLATE pg_catalog."default" NOT NULL,
+    amount numeric(10,2) NOT NULL,
+    "paymentDate" timestamp(3) without time zone,
+    "reservationId" text COLLATE pg_catalog."default" NOT NULL,
+    "createdAt" timestamp(3) without time zone NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" timestamp(3) without time zone,
+    "clientId" text COLLATE pg_catalog."default",
+    CONSTRAINT payments_pkey PRIMARY KEY (id),
+    CONSTRAINT "payments_clientId_fkey" FOREIGN KEY ("clientId")
+        REFERENCES public.clients (id) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE SET NULL,
+    CONSTRAINT "payments_reservationId_fkey" FOREIGN KEY ("reservationId")
+        REFERENCES public.reservations (id) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.payments
+    OWNER to avnadmin;

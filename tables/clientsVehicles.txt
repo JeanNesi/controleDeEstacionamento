@@ -1,0 +1,26 @@
+-- Table: public.clientsVehicles
+
+-- DROP TABLE IF EXISTS public."clientsVehicles";
+
+CREATE TABLE IF NOT EXISTS public."clientsVehicles"
+(
+    id text COLLATE pg_catalog."default" NOT NULL,
+    "clientId" text COLLATE pg_catalog."default" NOT NULL,
+    "vehicleId" text COLLATE pg_catalog."default" NOT NULL,
+    "createdAt" timestamp(3) without time zone NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" timestamp(3) without time zone,
+    CONSTRAINT "clientsVehicles_pkey" PRIMARY KEY (id),
+    CONSTRAINT "clientsVehicles_clientId_fkey" FOREIGN KEY ("clientId")
+        REFERENCES public.clients (id) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT,
+    CONSTRAINT "clientsVehicles_vehicleId_fkey" FOREIGN KEY ("vehicleId")
+        REFERENCES public.vehicles (id) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public."clientsVehicles"
+    OWNER to avnadmin;
