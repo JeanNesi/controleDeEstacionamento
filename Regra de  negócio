@@ -1,0 +1,71 @@
+1 -
+
+SELECT
+    CASE 
+		WHEN p.id IS NULL THEN 0 
+		WHEN p.id IS NOT NULL THEN p.id END as 'Planos',
+    COUNT(*) AS 'Total de pagamento por planos'
+FROM
+    payments AS pay
+LEFT JOIN
+    dbo.clients AS c ON pay.clientId = c.id
+LEFT JOIN
+    dbo.plans AS p ON c.planId = p.id
+WHERE pay.paymentDate BETWEEN '2021-07-06 00:00:00.000' AND '2024-07-06 00:00:00.000' 
+GROUP BY 
+    p.id;
+    
+
+2 -
+
+
+
+
+3 -
+
+ WITH topPlan (Planos , Veiculos)
+AS
+(
+	SELECT p.id as Planos, COUNT(*) as Veiculos
+	FROM plans p
+	INNER JOIN clients c 
+		ON c.planId = p.id
+	INNER JOIN  clientsVehicles v
+		ON c.id = v.clientId
+	INNER JOIN payments pay
+		ON pay.clientId = c.id
+	INNER JOIN reservations r
+		ON r.id = pay.reservationId
+	WHERE DATEPART(HOUR, r.startTime) >= 8
+		  OR DATEPART(HOUR, r.startTime) <= 6  
+	GROUP BY p.id
+)
+SELECT TOP 3 Planos as 'Planos noturnos mais populares' FROM topPlan
+GROUP BY Planos,Veiculos
+HAVING Veiculos >= 2
+ORDER BY Veiculos   
+    
+4 - 
+
+WITH Valores(plano,receita,carros,motos)
+AS
+(
+	SELECT
+    p.id AS plano,
+    SUM(pay.amount) AS receita,
+    SUM(CASE WHEN v.type = 'C' THEN pay.amount ELSE 0 END) AS carros,
+    SUM(CASE WHEN v.type = 'M' THEN pay.amount ELSE 0 END) AS motos
+FROM
+    payments pay
+    INNER JOIN reservations r ON r.id = pay.reservationId
+    INNER JOIN users u ON u.id = r.userId
+    INNER JOIN clients c ON c.userId = u.id
+    INNER JOIN vehicles v ON v.clientId = c.id
+    INNER JOIN plans p ON c.planId = p.id
+WHERE
+    r.startTime BETWEEN '2021-07-06 00:00:00.000' AND '2024-07-06 00:00:00.000' 
+GROUP BY
+    p.id
+)
+SELECT (SELECT SUM(receita) FROM Valores) as Total,carros, Motos, plano FROM Valores
+GROUP BY plano,carros,motos
