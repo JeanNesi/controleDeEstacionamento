@@ -1,11 +1,11 @@
 -- Inserir dados na tabela "vehicles"
-INSERT INTO vehicles (id, clientId, planId, name, plate, createdAt, updatedAt)
+INSERT INTO vehicles (id, clientId, planId, name, type, plate, createdAt, updatedAt)
 VALUES
-  ('bf153ef7-baa9-4d8b-8a41-5c282e7e3b0e', '4f3a34e0-8be4-4c8c-b648-2e4a81bb6dbd', 'd725bf63-41a8-4d2a-8c07-fc6efdbb4d92', 'Celta', 'ABC1234', CURRENT_TIMESTAMP, NULL),
-  ('0b7a8911-f5eb-4ed9-95ae-4dc4c2006fd3', 'e9814a2b-01da-4a0c-b192-0a06f5dc607d', '93f8a098-3a74-45d4-bd8a-e5e08e5244ce', 'Corsa', 'DEF5678', CURRENT_TIMESTAMP, NULL),
-  ('57d7e1c9-22b1-4bce-97e2-b4ef9c4f4f26', 'f7511fa7-654b-40e9-a012-27c0a6852cb4', 'b55c1d41-2e92-4fd2-92d7-11d1289010f9', 'Gol', 'GHI9012', CURRENT_TIMESTAMP, NULL),
-  ('248a767e-fb11-40f1-9b95-9d3c2621c0ed', 'f3723bbf-2354-49a7-82c1-30bcbf5a7b16', 'f38e0ab1-9502-44d7-9d69-ae520e9ef60b', 'Sandero', 'JKL3456', CURRENT_TIMESTAMP, NULL),
-  ('3b365fa1-1534-4ae0-8ee1-582b6cc930ab', 'b05e9245-0eae-4870-843d-62374e6a740f', '7e625e9e-c301-4f25-bb5e-06e1b5e0dc98', 'Fox', 'MNO7890', CURRENT_TIMESTAMP, NULL);
+  ('bf153ef7-baa9-4d8b-8a41-5c282e7e3b0e', '4f3a34e0-8be4-4c8c-b648-2e4a81bb6dbd', 'd725bf63-41a8-4d2a-8c07-fc6efdbb4d92', 'Celta', 0, 'ABC1234', CURRENT_TIMESTAMP, NULL),
+  ('0b7a8911-f5eb-4ed9-95ae-4dc4c2006fd3', 'e9814a2b-01da-4a0c-b192-0a06f5dc607d', '93f8a098-3a74-45d4-bd8a-e5e08e5244ce', 'Corsa', 0, 'DEF5678', CURRENT_TIMESTAMP, NULL),
+  ('57d7e1c9-22b1-4bce-97e2-b4ef9c4f4f26', 'f7511fa7-654b-40e9-a012-27c0a6852cb4', 'b55c1d41-2e92-4fd2-92d7-11d1289010f9', 'Gol', 0, 'GHI9012', CURRENT_TIMESTAMP, NULL),
+  ('248a767e-fb11-40f1-9b95-9d3c2621c0ed', 'f3723bbf-2354-49a7-82c1-30bcbf5a7b16', 'f38e0ab1-9502-44d7-9d69-ae520e9ef60b', 'Sandero', 0, 'JKL3456', CURRENT_TIMESTAMP, NULL),
+  ('3b365fa1-1534-4ae0-8ee1-582b6cc930ab', 'b05e9245-0eae-4870-843d-62374e6a740f', '7e625e9e-c301-4f25-bb5e-06e1b5e0dc98', 'Fox', 0, 'MNO7890', CURRENT_TIMESTAMP, NULL);
   
 
 
