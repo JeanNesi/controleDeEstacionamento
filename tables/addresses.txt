@@ -7,10 +7,10 @@ CREATE TABLE IF NOT EXISTS public.addresses
     id text COLLATE pg_catalog."default" NOT NULL,
     street text COLLATE pg_catalog."default" NOT NULL,
     city text COLLATE pg_catalog."default" NOT NULL,
-    state text COLLATE pg_catalog."default" NOT NULL,
+    uf text COLLATE pg_catalog."default" NOT NULL,
     "zipCode" text COLLATE pg_catalog."default" NOT NULL,
     "createdAt" timestamp(3) without time zone NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" timestamp(3) without time zone NOT NULL,
+    "updatedAt" timestamp(3) without time zone,
     CONSTRAINT addresses_pkey PRIMARY KEY (id)
 )
 
@@ -18,11 +18,3 @@ TABLESPACE pg_default;
 
 ALTER TABLE IF EXISTS public.addresses
     OWNER to avnadmin;
--- Index: addresses_id_key
-
--- DROP INDEX IF EXISTS public.addresses_id_key;
-
-CREATE UNIQUE INDEX IF NOT EXISTS addresses_id_key
-    ON public.addresses USING btree
-    (id COLLATE pg_catalog."default" ASC NULLS LAST)
-    TABLESPACE pg_default;
