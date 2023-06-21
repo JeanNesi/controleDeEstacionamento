@@ -20,7 +20,8 @@ Utilizado https://dbdiagram.io/<br>
 
 ### Dicionário de Dados:
 <code>Excel ou tabela do Github (markdown)</code>
-https://docs.google.com/spreadsheets/d/1WUYTASfX49KInMTQkbXf5RoHuNEFaaON1TP2quygtZE/edit?usp=sharing
+Link PDF: https://docs.google.com/spreadsheets/d/e/2PACX-1vSVwwoesxQ3KJ2fPSw9dzwcFo78VBMPH67JbzX3r_njpgDXnTr5BGfKWPLA_PjakYipvN7zS6PNFpGL/pub?output=pdf
+Link Google Shetts: https://docs.google.com/spreadsheets/d/1WUYTASfX49KInMTQkbXf5RoHuNEFaaON1TP2quygtZE/edit?usp=sharing
 
 ### Scripts DDL Criação do Database:
 Banco de dados utilizado SQL Server versão 2022 - Azure.<br>
