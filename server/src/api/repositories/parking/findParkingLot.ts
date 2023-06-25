@@ -1,7 +1,7 @@
 import { prisma } from '../../../../prisma';
 
-export function findParkingLot() {
-    return prisma.parkingLot.findMany({
+export async function findParkingLot() {
+    return await prisma.parkingLot.findFirst({
         select: {
             id: true,
             name: true,
@@ -9,7 +9,6 @@ export function findParkingLot() {
             capacity: true,
             createdAt: true,
             updatedAt: true,
-            //reservations: true,
         }
     });
 }
