@@ -1,9 +1,12 @@
-import { Router } from 'express';
-import { swaggerLoader, swaggerUI } from '../config/swagger';
+import { Router, Response, Request } from 'express';
+import parkingController from './controllers/parking/parkingController'
+const router = Router();
 
-export const serverRouter = Router();
+router.get('/', (req: Request, res: Response) => {
+  res.send('Hello word');
+})
+router.get('/parking/', parkingController.getParking)
+router.get('/parking/slots', parkingController.getSlots)
 
-serverRouter.use('/docs', swaggerUI.serve, (_req: any, res: any) => {
-  res.send(swaggerUI.generateHTML(swaggerLoader));
-});
+export default router;
 

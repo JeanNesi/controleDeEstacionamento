@@ -8,7 +8,7 @@ export async function addressController(res: Response) {
     console.log('passou aqui')
     if (!!!addresses) {
         throw new ErrorMessage({
-            statusCode: 401,
+            statusCode: 404,
             message: 'Não foi possível localizar os endereços.'
         });
     }
