@@ -1,7 +1,7 @@
 import { prisma } from '../../../../prisma';
 
-export function findClients() {
-    return prisma.clients.findMany({
+export async function findClients() {
+    return await prisma.clients.findMany({
         select: {
             id: true,
             userId: true,

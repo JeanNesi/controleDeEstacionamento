@@ -1,6 +1,6 @@
 import { prisma } from '../../../../prisma';
 
-export function findReservationByPLate(licensePlate: string) {
+export function findReservationByPlate(licensePlate: string) {
     return prisma.reservations.findMany({
         select: {
             id: true,

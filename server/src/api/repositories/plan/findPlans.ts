@@ -1,6 +1,6 @@
 import { prisma } from '../../../../prisma';
 
-export function findVehicles() {
+export function findPlans() {
     return prisma.plan.findMany({
         select: {
             id: true,
