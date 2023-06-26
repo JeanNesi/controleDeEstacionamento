@@ -17,7 +17,7 @@
   "author": "Carlos Pasquali Dev",
   "license": "MIT",
   "dependencies": {
-    "@prisma/client": "^4.7.1",
+    "@prisma/client": "^4.16.1",
     "aws-sdk": "^2.1276.0",
     "axios": "^1.2.1",
     "bcrypt": "^5.1.0",
