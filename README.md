@@ -15,7 +15,7 @@
 ### Modelo Físico:
 Utilizado https://dbdiagram.io/<br>
 <br>https://dbdiagram.io/d/64890510722eb77494e9af66</br>
-<code>![Copy of Untitled Diagram](https://github.com/JeanNesi/controleDeEstacionamento/assets/102368879/f591ef90-606d-4384-a52a-e6823d6a8a4a)</code>
+<code>![Copy of Untitled Diagram]([https://github.com/JeanNesi/controleDeEstacionamento/assets/102368879/f591ef90-606d-4384-a52a-e6823d6a8a4a](https://github.com/JeanNesi/controleDeEstacionamento/blob/main/tables/tables.png?raw=true))</code>
 
 
 ### Dicionário de Dados:
