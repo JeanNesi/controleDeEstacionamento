@@ -1,18 +1,12 @@
--- Inserir dados na tabela "vehicles"
-INSERT INTO vehicles (id, clientId, planId, name, type, plate, createdAt, updatedAt)
+INSERT INTO vehicles (id, clientId, name, plate, createdAt, updatedAt, planId)
 VALUES
-  ('bf153ef7-baa9-4d8b-8a41-5c282e7e3b0e', '4f3a34e0-8be4-4c8c-b648-2e4a81bb6dbd', 'd725bf63-41a8-4d2a-8c07-fc6efdbb4d92', 'Celta', 0, 'ABC1234', CURRENT_TIMESTAMP, NULL),
-  ('0b7a8911-f5eb-4ed9-95ae-4dc4c2006fd3', 'e9814a2b-01da-4a0c-b192-0a06f5dc607d', '93f8a098-3a74-45d4-bd8a-e5e08e5244ce', 'Corsa', 0, 'DEF5678', CURRENT_TIMESTAMP, NULL),
-  ('57d7e1c9-22b1-4bce-97e2-b4ef9c4f4f26', 'f7511fa7-654b-40e9-a012-27c0a6852cb4', 'b55c1d41-2e92-4fd2-92d7-11d1289010f9', 'Gol', 0, 'GHI9012', CURRENT_TIMESTAMP, NULL),
-  ('248a767e-fb11-40f1-9b95-9d3c2621c0ed', 'f3723bbf-2354-49a7-82c1-30bcbf5a7b16', 'f38e0ab1-9502-44d7-9d69-ae520e9ef60b', 'Sandero', 0, 'JKL3456', CURRENT_TIMESTAMP, NULL),
-  ('3b365fa1-1534-4ae0-8ee1-582b6cc930ab', 'b05e9245-0eae-4870-843d-62374e6a740f', '7e625e9e-c301-4f25-bb5e-06e1b5e0dc98', 'Fox', 0, 'MNO7890', CURRENT_TIMESTAMP, NULL);
-  
-
-
-
-
-
-
-
-
-
+('3dcee5c3-16e3-4be4-a8e4-0fb0c2a4e13c', 'zdcee5c3-16e3-4be4-a8e4-0fb0c2a4e13c', 'Toyota Corolla', 'ABC1234', '2023-06-26 10:00:00', NULL, '3dcee5c3-16e3-4be4-a8e4-0fb0c2a4e13c'),
+('fd5b7c1f-12c9-4fd7-9c5c-4eb228a8c456', 'zd5b7c1f-12c9-4fd7-9c5c-4eb228a8c456', 'Honda Civic', 'DEF5678', '2023-06-26 11:30:00', NULL, 'fd5b7c1f-12c9-4fd7-9c5c-4eb228a8c456'),
+('8b4c1c27-73fb-4a67-a8cd-ff77e96fc0e9', 'zb4c1c27-73fb-4a67-a8cd-ff77e96fc0e9', 'Ford Mustang', 'GHI9012', '2023-06-26 12:45:00', NULL, '8b4c1c27-73fb-4a67-a8cd-ff77e96fc0e9'),
+('2aa869c4-4d6a-4030-b2c7-50e6be8d8579', 'zaa869c4-4d6a-4030-b2c7-50e6be8d8579', 'Chevrolet Camaro', 'JKL3456', '2023-06-26 14:15:00', NULL, '2aa869c4-4d6a-4030-b2c7-50e6be8d8579'),
+('95e6b1ce-0495-4b6d-9f62-9c5e9cc6a7a3', 'z5e6b1ce-0495-4b6d-9f62-9c5e9cc6a7a3', 'Nissan Altima', 'MNO7890', '2023-06-26 15:30:00', NULL, '95e6b1ce-0495-4b6d-9f62-9c5e9cc6a7a3'),
+('6fdbe654-95fb-4d06-bb0b-207721d7f2f2', 'zfdbe654-95fb-4d06-bb0b-207721d7f2f2', 'Volkswagen Golf', 'PQR1234', '2023-06-26 16:45:00', NULL, '6fdbe654-95fb-4d06-bb0b-207721d7f2f2'),
+('78c6d8a3-fc4d-4125-8a4a-aa09f4323ed9', 'z8c6d8a3-fc4d-4125-8a4a-aa09f4323ed9', 'BMW 3 Series', 'STU5678', '2023-06-26 18:00:00', NULL, '78c6d8a3-fc4d-4125-8a4a-aa09f4323ed9'),
+('96fb09a1-8c1f-4f39-b315-4420de23e9a0', 'z6fb09a1-8c1f-4f39-b315-4420de23e9a0', 'Mercedes-Benz C-Class', 'VWX9012', '2023-06-26 19:15:00', NULL, '96fb09a1-8c1f-4f39-b315-4420de23e9a0'),
+('4fa65f58-daf7-4f6f-8d24-59a1e430f6f5', 'zfa65f58-daf7-4f6f-8d24-59a1e430f6f5', 'Audi A4', 'YZA3456', '2023-06-26 20:30:00', NULL, '4fa65f58-daf7-4f6f-8d24-59a1e430f6f5'),
+('a6e95c8e-0c2d-432f-b41b-9574e8d6d159', 'z6e95c8e-0c2d-432f-b41b-9574e8d6d159', 'Lexus RX', 'BCD7890', '2023-06-26 21:45:00', NULL, 'a6e95c8e-0c2d-432f-b41b-9574e8d6d159');
