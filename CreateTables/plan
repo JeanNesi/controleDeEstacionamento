@@ -1,0 +1,9 @@
+CREATE TABLE plan (
+    id NVARCHAR(1000) NOT NULL,
+    amount DECIMAL(10,2) NOT NULL,
+    finalDate DATETIME,
+    createdAt DATETIME NOT NULL CONSTRAINT [plan_createdAt_df] DEFAULT CURRENT_TIMESTAMP,
+    updatedAt DATETIME,
+
+    CONSTRAINT plan_pkey PRIMARY KEY CLUSTERED (id)
+);
