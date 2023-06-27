@@ -1,8 +1,9 @@
 import { DateTime } from 'aws-sdk/clients/devicefarm';
 import { prisma } from '../../../../prisma';
-import { v4 as uuidv4 } from 'uuid';
+import { ErrorMessage } from '../../utils/error';
 
-export async function createClient(data: {
+export async function updateClient(data: {
+    id: string;
     userId: string;
     planId: string | undefined;
     name: string;
@@ -12,11 +13,23 @@ export async function createClient(data: {
     gender: string;
     birthDate: DateTime | undefined;
 }) {
-    const id: string = uuidv4();
 
-    await prisma.clients.create({
-        data: {
-            id: id,
+    let identifier = await prisma.clients.findFirst({
+        select: { id: true },
+        where: { id: data.id }
+    })
+
+    if (identifier == undefined || !identifier) {
+        throw new ErrorMessage({
+            statusCode: 404,
+            message: 'Não foi possível localizar o cliente para alterá-lo.'
+        });
+    }
+
+    await prisma.clients.update({
+        where: {
+            id: data.id
+        }, data: {
             userId: data.userId,
             planId: data.planId,
             name: data.name,
@@ -25,19 +38,11 @@ export async function createClient(data: {
             gender: data.gender,
             birthDate: data.birthDate,
         }
-    });
-
-    const identifier = await prisma.clients.findFirst({
-        select: {
-            id: true,
-        },
-        where: { id: id }
     })
 
     if (identifier) {
-        console.log(identifier.id)
         return identifier.id; // Retorna apenas o ID, em vez do objeto completo
-      } else {
+    } else {
         return null; // Ou qualquer outro valor que indique que não foi encontrado um registro com o ID especificado
-      }
+    }
 }

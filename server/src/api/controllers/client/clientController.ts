@@ -1,5 +1,5 @@
 import { Response, Request } from 'express';
-import { findClients, createClient } from '../../repositories/client';
+import { findClients, createClient, updateClient, deleteClient } from '../../repositories/client';
 import { ErrorMessage } from '../../utils/error';
 
 
@@ -7,7 +7,7 @@ class clientController {
     async getClient(req: Request, res: Response): Promise<void> {
 
         const clients = await findClients();
-        
+
         if (!Array.isArray(clients) || clients.length === 0) {
             res.status(404).json({
                 statusCode: 404,
@@ -25,7 +25,6 @@ class clientController {
             userId: client.userId,
             planId: client.planId,
             name: client.name,
-            email: client.email,
             phoneNumber: client.phoneNumber,
             cpf: client.cpf,
             gender: client.gender,
@@ -40,10 +39,61 @@ class clientController {
     async postClient(req: Request, res: Response): Promise<void> {
 
         const { userId, planId, name, email, phoneNumber, cpf, gender, birthDate } = req.body
-        
-        const retorno = createClient({ userId, planId, name, email, phoneNumber, cpf, gender, birthDate })
 
-        res.status(200).json(retorno);
+        const retorno = await createClient({ userId, planId, name, email, phoneNumber, cpf, gender, birthDate })
+
+        if (retorno == undefined) {
+            res.status(404).json({
+                statusCode: 404,
+                message: 'Não foi possível inserir cliente.'
+            });
+
+            throw new ErrorMessage({
+                statusCode: 404,
+                message: 'Não foi possível inserir cliente.'
+            });
+        }
+
+        res.status(200).json({id: retorno});
+    }
+
+    async putClient(req: Request, res: Response): Promise<void> {
+
+        const { id } = req.params
+
+        const { userId,
+            planId,
+            name,
+            email,
+            phoneNumber,
+            cpf,
+            gender,
+            birthDate } = req.body
+
+        const retorno = await updateClient({ id, userId, planId, name, email, phoneNumber, cpf, gender, birthDate })
+
+        if (retorno == undefined || retorno == null) {
+            res.status(404).json({
+                statusCode: 404,
+                message: 'Não foi possível alterar o cliente.'
+            });
+
+            throw new ErrorMessage({
+                statusCode: 404,
+                message: 'Não foi possível alterar o cliente.'
+            });
+        }
+
+        res.status(200).json({id: retorno});
+    }
+
+    async deleteClient(req: Request, res: Response): Promise<void> {
+
+        const { id } = req.params
+
+        await deleteClient(id)
+
+        res.status(200).json("Cliente removido com sucesso!");
     }
 }
 
