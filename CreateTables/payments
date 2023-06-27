@@ -5,5 +5,5 @@ CREATE TABLE payments (
     reservationId VARCHAR(100) NOT NULL,
     createdAt DATETIME NOT NULL ,
     updatedAt DATETIME,
-    clientId VARCHAR(1000),
+    clientId VARCHAR(MAX),
 );
