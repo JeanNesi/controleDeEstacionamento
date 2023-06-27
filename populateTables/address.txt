@@ -1,8 +1,12 @@
--- Inserir dados na tabela "addresses"
 INSERT INTO addresses (id, street, city, uf, zipCode, createdAt, updatedAt)
 VALUES
-  ('3dcee5c3-16e3-4be4-a8e4-0fb0c2a4e13c', 'Rua Alegria', 'São Paulo', 'SP', '01234567', CURRENT_TIMESTAMP, NULL),
-  ('fd5b7c1f-12c9-4fd7-9c5c-4eb228a8c456', 'Rua Barra de São João', 'São Paulo', 'SP', '02040070', CURRENT_TIMESTAMP, NULL),
-  ('8b4c1c27-73fb-4a67-a8cd-ff77e96fc0e9', 'Rua São Boaventura', 'São Paulo', 'SP', '80000456', CURRENT_TIMESTAMP, NULL),
-  ('2aa869c4-4d6a-4030-b2c7-50e6be8d8579', 'Avenida Paulista', 'São Paulo', 'SP', '01333999', CURRENT_TIMESTAMP, NULL),
-  ('95e6b1ce-0495-4b6d-9f62-9c5e9cc6a7a3', 'Viela São Paulo', 'São Paulo', 'SP', '88000001', CURRENT_TIMESTAMP, NULL);
+('3dcee5c3-16e3-4be4-a8e4-0fb0c2a4e13c', 'Rua Alegria', 'São Paulo', 'SP', '01234567', '2023-06-26 10:00:00', NULL),
+('fd5b7c1f-12c9-4fd7-9c5c-4eb228a8c456', 'Rua Barra de São João', 'São Paulo', 'SP', '02040070', '2023-06-26 11:30:00', NULL),
+('8b4c1c27-73fb-4a67-a8cd-ff77e96fc0e9', 'Rua São Boaventura', 'São Paulo', 'SP', '80000456', '2023-06-26 12:45:00', NULL),
+('2aa869c4-4d6a-4030-b2c7-50e6be8d8579', 'Avenida Paulista', 'São Paulo', 'SP', '01333999', '2023-06-26 14:15:00', NULL),
+('95e6b1ce-0495-4b6d-9f62-9c5e9cc6a7a3', 'Viela São Paulo', 'São Paulo', 'SP', '88000001', '2023-06-26 15:30:00', NULL),
+('6fdbe654-95fb-4d06-bb0b-207721d7f2f2', 'Rua da Paz', 'Rio de Janeiro', 'RJ', '20000000', '2023-06-26 16:45:00', NULL),
+('78c6d8a3-fc4d-4125-8a4a-aa09f4323ed9', 'Avenida Central', 'Rio de Janeiro', 'RJ', '22000000', '2023-06-26 18:00:00', NULL),
+('96fb09a1-8c1f-4f39-b315-4420de23e9a0', 'Rua das Flores', 'Porto Alegre', 'RS', '90000001', '2023-06-26 19:15:00', NULL),
+('4fa65f58-daf7-4f6f-8d24-59a1e430f6f5', 'Avenida da Liberdade', 'São Paulo', 'SP', '04567890', '2023-06-26 20:30:00', NULL),
+('a6e95c8e-0c2d-432f-b41b-9574e8d6d159', 'Rua Principal', 'Belo Horizonte', 'MG', '30000000', '2023-06-26 21:45:00', NULL);

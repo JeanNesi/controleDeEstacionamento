@@ -1,0 +1,11 @@
+CREATE TABLE payments (
+    id VARCHAR(MAX) NOT NULL,
+    amount DECIMAL(10,2) NOT NULL,
+    paymentDate DATETIME,
+    reservationId VARCHAR(100) NOT NULL,
+    createdAt DATETIME NOT NULL ,
+    updatedAt DATETIME,
+    clientId VARCHAR(MAX),
+
+    CONSTRAINT payments_pkey PRIMARY KEY CLUSTERED (id)
+);

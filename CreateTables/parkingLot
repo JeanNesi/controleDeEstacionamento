@@ -1,0 +1,10 @@
+CREATE TABLE parkingLot (
+    id VARCHAR(MAX) NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    amountPerHour DECIMAL(10,2) NOT NULL,
+    capacity INT NOT NULL,
+    createdAt DATETIME NOT NULL ,
+    updatedAt DATETIME,
+
+    CONSTRAINT parkingLot_pkey PRIMARY KEY CLUSTERED (id)
+);

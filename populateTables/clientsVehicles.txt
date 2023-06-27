@@ -1,15 +1,12 @@
--- Inserir dados na tabela "clientsVehicles"
-INSERT INTO clientsVehicles (id, clientId, vehicleId, createdAt, updatedAt)
+INSERT INTO clientsVehicles (id, vehicleId, createdAt, updatedAt, clientId)
 VALUES
-  ('a9e72ee2-7f84-4ce5-aae6-89b58da11b59', '4f3a34e0-8be4-4c8c-b648-2e4a81bb6dbd', 'bf153ef7-baa9-4d8b-8a41-5c282e7e3b0e', CURRENT_TIMESTAMP, NULL),
-  ('7b0e80b1-29b9-487b-af51-cb8da87a2d24', 'e9814a2b-01da-4a0c-b192-0a06f5dc607d', '0b7a8911-f5eb-4ed9-95ae-4dc4c2006fd3', CURRENT_TIMESTAMP, NULL),
-  ('99f2a460-9c55-45a6-bf7c-7e97df267ad5', 'f7511fa7-654b-40e9-a012-27c0a6852cb4', '57d7e1c9-22b1-4bce-97e2-b4ef9c4f4f26', CURRENT_TIMESTAMP, NULL),
-  ('8b56fe85-4ce7-4f0e-97c5-2f30e680df07', 'f3723bbf-2354-49a7-82c1-30bcbf5a7b16', '248a767e-fb11-40f1-9b95-9d3c2621c0ed', CURRENT_TIMESTAMP, NULL),
-  ('9e789d44-6c54-4e79-9297-eebf6ef9c7d7', 'b05e9245-0eae-4870-843d-62374e6a740f', '3b365fa1-1534-4ae0-8ee1-582b6cc930ab', CURRENT_TIMESTAMP, NULL);
-  
-
-
-
-
-
-
+('3dcee5c3-16e3-4be4-a8e4-0fb0c2a4e13c', '3dcee5c3-16e3-4be4-a8e4-0fb0c2a4e13c', '2023-06-26 10:00:00', NULL, 'zdcee5c3-16e3-4be4-a8e4-0fb0c2a4e13c'),
+('fd5b7c1f-12c9-4fd7-9c5c-4eb228a8c456', 'fd5b7c1f-12c9-4fd7-9c5c-4eb228a8c456', '2023-06-26 11:30:00', NULL, 'zd5b7c1f-12c9-4fd7-9c5c-4eb228a8c456'),
+('8b4c1c27-73fb-4a67-a8cd-ff77e96fc0e9', '8b4c1c27-73fb-4a67-a8cd-ff77e96fc0e9', '2023-06-26 12:45:00', NULL, 'zb4c1c27-73fb-4a67-a8cd-ff77e96fc0e9'),
+('2aa869c4-4d6a-4030-b2c7-50e6be8d8579', '2aa869c4-4d6a-4030-b2c7-50e6be8d8579', '2023-06-26 14:15:00', NULL, 'zaa869c4-4d6a-4030-b2c7-50e6be8d8579'),
+('95e6b1ce-0495-4b6d-9f62-9c5e9cc6a7a3', '95e6b1ce-0495-4b6d-9f62-9c5e9cc6a7a3', '2023-06-26 15:30:00', NULL, 'z5e6b1ce-0495-4b6d-9f62-9c5e9cc6a7a3'),
+('6fdbe654-95fb-4d06-bb0b-207721d7f2f2', '6fdbe654-95fb-4d06-bb0b-207721d7f2f2', '2023-06-26 16:45:00', NULL, 'zfdbe654-95fb-4d06-bb0b-207721d7f2f2'),
+('78c6d8a3-fc4d-4125-8a4a-aa09f4323ed9', '78c6d8a3-fc4d-4125-8a4a-aa09f4323ed9', '2023-06-26 18:00:00', NULL, 'z8c6d8a3-fc4d-4125-8a4a-aa09f4323ed9'),
+('96fb09a1-8c1f-4f39-b315-4420de23e9a0', '96fb09a1-8c1f-4f39-b315-4420de23e9a0', '2023-06-26 19:15:00', NULL, 'z6fb09a1-8c1f-4f39-b315-4420de23e9a0'),
+('4fa65f58-daf7-4f6f-8d24-59a1e430f6f5', '4fa65f58-daf7-4f6f-8d24-59a1e430f6f5', '2023-06-26 20:30:00', NULL, 'zfa65f58-daf7-4f6f-8d24-59a1e430f6f5'),
+('a6e95c8e-0c2d-432f-b41b-9574e8d6d159', 'a6e95c8e-0c2d-432f-b41b-9574e8d6d159', '2023-06-26 21:45:00', NULL, 'z6e95c8e-0c2d-432f-b41b-9574e8d6d159');

@@ -1,0 +1,11 @@
+CREATE TABLE addresses (
+    id VARCHAR(MAX) NOT NULL,
+    street VARCHAR(50) NOT NULL,
+    city VARCHAR(50) NOT NULL,
+    uf CHAR(2) NOT NULL,
+    zipCode CHAR(8) NOT NULL,
+    createdAt DATETIME,
+    updatedAt DATETIME,
+
+    CONSTRAINT addresses_pkey PRIMARY KEY CLUSTERED (id)
+);
