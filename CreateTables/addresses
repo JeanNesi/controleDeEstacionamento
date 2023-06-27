@@ -1,5 +1,5 @@
 CREATE TABLE addresses (
-    id VARCHAR(MAX) NOT NULL,
+    id VARCHAR(255) NOT NULL,
     street VARCHAR(50) NOT NULL,
     city VARCHAR(50) NOT NULL,
     uf CHAR(2) NOT NULL,
