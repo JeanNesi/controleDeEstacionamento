@@ -110,6 +110,23 @@ CREATE TABLE vehicles (
     CONSTRAINT vehicles_pkey PRIMARY KEY CLUSTERED (id)
 );
 
+CREATE TABLE clientsLog (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    clientId VARCHAR(255) NOT NULL,
+    action VARCHAR(10) NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    phoneNumber VARCHAR(15),
+    cpf CHAR(11) NOT NULL,
+    gender VARCHAR(20),
+    birthDate DATETIME,
+    createdAt DATETIME NOT NULL,
+    updatedAt DATETIME,
+    planId VARCHAR(255),
+    userId VARCHAR(255) NOT NULL,
+    logDate DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
 ALTER TABLE users ADD CONSTRAINT users_addressId_fkey FOREIGN KEY (addressId) REFERENCES addresses(id) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 ALTER TABLE reservations ADD CONSTRAINT reservations_clientId_fkey FOREIGN KEY (clientId) REFERENCES clients(id) ON DELETE NO ACTION ON UPDATE NO ACTION;
