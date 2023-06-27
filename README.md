@@ -14,7 +14,7 @@
 
 ### Modelo Físico:
 Utilizado https://dbdiagram.io/<br>
-<br>https://dbdiagram.io/d/64890510722eb77494e9af66</br>
+<br>[https://dbdiagram.io/d/64890510722eb77494e9af66](https://dbdiagram.io/d/649b00a302bd1c4a5e25878b)</br>
 <code>(![image](https://github.com/JeanNesi/controleDeEstacionamento/assets/98506943/f81f953f-7b71-4121-846f-6c121f6387e5))</code>
 
 
@@ -23,16 +23,14 @@ Link PDF: https://docs.google.com/spreadsheets/d/e/2PACX-1vSVwwoesxQ3KJ2fPSw9dzw
 Link Google Shetts: https://docs.google.com/spreadsheets/d/1WUYTASfX49KInMTQkbXf5RoHuNEFaaON1TP2quygtZE/edit?usp=sharing
 
 ### Scripts DDL Criação do Database:
-Banco de dados utilizado SQL Server versão 2022 - Azure.<br>
-<code>1 arquivo SQL por objeto</code>
+<code>Pasta CreateTables</code>
 
 ### Scripts Popula tabelas:
-Banco de dados utilizado SQL Server versão 2022 - Azure.<br>
-<code>1 arquivo SQL por objeto</code>
+<code>Pasta populateTables</code>
 
 ### Objetos de BD (stored procedure, triggers e functions):
-<code>1 arquivo SQL por objeto</code>
+<code>database programming</code>
   
 ### Código do sistema:
 Linguagem de Programação C# .NET.<br>
-<code>código fonte da aplicação</code>
+<code>Pastas client e server</code>
