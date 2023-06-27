@@ -1,0 +1,16 @@
+CREATE TABLE clients (
+    id NVARCHAR(1000) NOT NULL,
+    name NVARCHAR(1000) NOT NULL,
+    email NVARCHAR(1000) NOT NULL,
+    phoneNumber NVARCHAR(1000) NOT NULL,
+    cpf NVARCHAR(1000) NOT NULL,
+    gender NVARCHAR(1000),
+    birthDate DATETIME2,
+    createdAt DATETIME2 NOT NULL CONSTRAINT clients_createdAt_df DEFAULT CURRENT_TIMESTAMP,
+    updatedAt DATETIME2,
+    planId NVARCHAR(1000),
+    userId NVARCHAR(1000) NOT NULL,
+    CONSTRAINT clients_pkey PRIMARY KEY CLUSTERED (id),
+    CONSTRAINT clients_email_key UNIQUE NONCLUSTERED (email),
+    CONSTRAINT clients_cpf_key UNIQUE NONCLUSTERED (cpf)
+);
