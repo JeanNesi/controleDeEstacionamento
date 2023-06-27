@@ -4,13 +4,13 @@ AS
 BEGIN
     DECLARE @totalAmount DECIMAL(10, 2);
 
-    -- Obtém a quantidade de horas reservadas para a reserva
+    -- Para obter a quantidade de horas que o carro ficou na vaga
     DECLARE @hours INT;
     SELECT @hours = DATEDIFF(HOUR, startTime, endTime)
     FROM reservations
     WHERE id = @reservationId;
 
-    -- Obtém o valor por hora do estacionamento para a reserva
+    -- Para obter o valor por hora do estacionamento
     DECLARE @amountPerHour DECIMAL(10, 2);
     SELECT @amountPerHour = amountPerHour
     FROM parkingLot
