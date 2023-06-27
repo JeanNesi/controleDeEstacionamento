@@ -6,5 +6,6 @@ CREATE TABLE addresses (
     zipCode CHAR(8) NOT NULL,
     createdAt DATETIME,
     updatedAt DATETIME,
-   
+
+    CONSTRAINT addresses_pkey PRIMARY KEY CLUSTERED (id)
 );
