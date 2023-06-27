@@ -1,9 +1,9 @@
 CREATE TABLE parkingLot (
-    id VARCHAR(MAX) NOT NULL,
+    id VARCHAR(255) NOT NULL,
     name VARCHAR(100) NOT NULL,
     amountPerHour DECIMAL(10,2) NOT NULL,
     capacity INT NOT NULL,
-    createdAt DATETIME NOT NULL ,
+    createdAt DATETIME NOT NULL CONSTRAINT parkingLot_createdAt_df DEFAULT CURRENT_TIMESTAMP,
     updatedAt DATETIME,
 
     CONSTRAINT parkingLot_pkey PRIMARY KEY CLUSTERED (id)
