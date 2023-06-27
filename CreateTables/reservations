@@ -1,0 +1,11 @@
+CREATE TABLE reservations (
+    id VARCHAR(MAX) NOT NULL,
+    startTime DATETIME NOT NULL,
+    endTime DATETIME ,
+    createdAt DATETIME,
+    updatedAt DATETIME,
+    vehicleId VARCHAR(1000) NOT NULL,
+    parkingId VARCHAR(1000) NOT NULL,
+    clientId NVARCHAR(1000),
+  
+);
