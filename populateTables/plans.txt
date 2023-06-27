@@ -1,18 +1,12 @@
--- Inserir dados na tabela "plans"
-INSERT INTO plans (id, name, amount, finalDate, createdAt, updatedAt)
+INSERT INTO [plan] (id, amount, finalDate, createdAt, updatedAt)
 VALUES
-  ('d725bf63-41a8-4d2a-8c07-fc6efdbb4d92', "Plano mensal", 100.00, '2023-12-31T00:00:00', CURRENT_TIMESTAMP, NULL),
-  ('93f8a098-3a74-45d4-bd8a-e5e08e5244ce', "Plano semanal", 80.00, '2023-12-31T00:00:00', CURRENT_TIMESTAMP, NULL),
-  ('b55c1d41-2e92-4fd2-92d7-11d1289010f9', "Plano mensal", 120.00, '2023-12-31T00:00:00', CURRENT_TIMESTAMP, NULL),
-  ('f38e0ab1-9502-44d7-9d69-ae520e9ef60b', "Plano semanal", 90.00, '2023-12-31T00:00:00', CURRENT_TIMESTAMP, NULL),
-  ('7e625e9e-c301-4f25-bb5e-06e1b5e0dc98', "Plano quinzenal", 110.00, '2023-12-31T00:00:00', CURRENT_TIMESTAMP, NULL);
-
-
-
-
-
-
-
-
-
-
+('3dcee5c3-16e3-4be4-a8e4-0fb0c2a4e13c', 50.00, '2023-07-26', '2023-06-26 10:00:00', NULL),
+('fd5b7c1f-12c9-4fd7-9c5c-4eb228a8c456', 30.00, '2023-08-26', '2023-06-26 11:30:00', NULL),
+('8b4c1c27-73fb-4a67-a8cd-ff77e96fc0e9', 40.00, '2023-09-26', '2023-06-26 12:45:00', NULL),
+('2aa869c4-4d6a-4030-b2c7-50e6be8d8579', 60.00, '2023-10-26', '2023-06-26 14:15:00', NULL),
+('95e6b1ce-0495-4b6d-9f62-9c5e9cc6a7a3', 35.00, '2023-11-26', '2023-06-26 15:30:00', NULL),
+('6fdbe654-95fb-4d06-bb0b-207721d7f2f2', 55.00, '2023-12-26', '2023-06-26 16:45:00', NULL),
+('78c6d8a3-fc4d-4125-8a4a-aa09f4323ed9', 25.00, '2024-01-26', '2023-06-26 18:00:00', NULL),
+('96fb09a1-8c1f-4f39-b315-4420de23e9a0', 45.00, '2024-02-26', '2023-06-26 19:15:00', NULL),
+('4fa65f58-daf7-4f6f-8d24-59a1e430f6f5', 32.00, '2024-03-26', '2023-06-26 20:30:00', NULL),
+('a6e95c8e-0c2d-432f-b41b-9574e8d6d159', 48.00, '2024-04-26', '2023-06-26 21:45:00', NULL);
