@@ -1,0 +1,10 @@
+CREATE TABLE vehicles (
+    id NVARCHAR(1000) NOT NULL,
+    clientId NVARCHAR(1000) NOT NULL,
+    name NVARCHAR(1000) NOT NULL,
+    plate NVARCHAR(1000) NOT NULL,
+    createdAt DATETIME NOT NULL CONSTRAINT vehicles_createdAt_df DEFAULT CURRENT_TIMESTAMP,
+    updatedAt DATETIME,
+    planId NVARCHAR(1000),
+    CONSTRAINT vehicles_pkey PRIMARY KEY CLUSTERED (id)
+);
