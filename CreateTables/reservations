@@ -7,5 +7,6 @@ CREATE TABLE reservations (
     vehicleId VARCHAR(MAX) NOT NULL,
     parkingId VARCHAR(MAX) NOT NULL,
     clientId VARCHAR(MAX),
-  
+
+    CONSTRAINT reservations_pkey PRIMARY KEY CLUSTERED (id)
 );
