@@ -1,8 +1,8 @@
 CREATE TABLE clientsVehicles (
-    id VARCHAR(1000) NOT NULL,
-    vehicleId VARCHAR(1000) NOT NULL,
+    id VARCHAR(MAX) NOT NULL,
+    vehicleId VARCHAR(MAX) NOT NULL,
     createdAt DATETIME NOT NULL CONSTRAINT clientsVehicles_createdAt_df DEFAULT CURRENT_TIMESTAMP,
     updatedAt DATETIME,
-    clientId VARCHAR(1000) NOT NULL,
+    clientId VARCHAR(MAX) NOT NULL,
     CONSTRAINT clientsVehicles_pkey PRIMARY KEY CLUSTERED (id)
 );
