@@ -1,0 +1,26 @@
+drop table clientsVehicles
+go
+
+drop table payments
+go
+
+drop table reservations
+go
+
+drop table vehicles
+go
+
+drop table parkingLot
+go
+
+drop table clients
+go
+
+drop table [plan]
+go
+
+drop table users
+go
+
+drop table addresses
+go
