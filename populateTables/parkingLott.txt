@@ -1,17 +1,12 @@
--- Inserir dados na tabela "parkingLott"
-INSERT INTO parkingLott (id, name, amountPerHour, capacity, createdAt, updatedAt)
+INSERT INTO parkingLot (id, name, amountPerHour, capacity, createdAt, updatedAt)
 VALUES
-  ('4a5f37fb-2c0a-4e65-a536-3b2124785b09', 'Estacionamento Central', 8.75, 80, CURRENT_TIMESTAMP, NULL),
-  ('6d631da0-7d5e-497f-8c2e-37ee873ec477', 'Estacionamento Norte', 12.00, 120, CURRENT_TIMESTAMP, NULL),
-  ('1801be82-fbd1-4f6f-a4d2-28cdd48eef85', 'Estacionamento Sul', 9.25, 70, CURRENT_TIMESTAMP, NULL),
-  ('88eb85e5-9fa3-4389-9b92-3e83c5d73ef1', 'Estacionamento Oeste', 11.00, 90, CURRENT_TIMESTAMP, NULL),
-  ('960fe06c-7e8f-4b82-af9a-cf927fbaf4a9', 'Estacionamento Leste', 10.50, 100, CURRENT_TIMESTAMP, NULL);
-  
-
-
-
-
-
-
-
-
+('3dcee5c3-16e3-4be4-a8e4-0fb0c2a4e13c', 'Parking Lot A', 10.50, 100, '2023-06-26 10:00:00', NULL),
+('fd5b7c1f-12c9-4fd7-9c5c-4eb228a8c456', 'Parking Lot B', 8.75, 80, '2023-06-26 11:30:00', NULL),
+('8b4c1c27-73fb-4a67-a8cd-ff77e96fc0e9', 'Parking Lot C', 12.25, 120, '2023-06-26 12:45:00', NULL),
+('2aa869c4-4d6a-4030-b2c7-50e6be8d8579', 'Parking Lot D', 9.99, 150, '2023-06-26 14:15:00', NULL),
+('95e6b1ce-0495-4b6d-9f62-9c5e9cc6a7a3', 'Parking Lot E', 7.50, 90, '2023-06-26 15:30:00', NULL),
+('6fdbe654-95fb-4d06-bb0b-207721d7f2f2', 'Parking Lot F', 11.00, 110, '2023-06-26 16:45:00', NULL),
+('78c6d8a3-fc4d-4125-8a4a-aa09f4323ed9', 'Parking Lot G', 6.25, 70, '2023-06-26 18:00:00', NULL),
+('96fb09a1-8c1f-4f39-b315-4420de23e9a0', 'Parking Lot H', 13.75, 130, '2023-06-26 19:15:00', NULL),
+('4fa65f58-daf7-4f6f-8d24-59a1e430f6f5', 'Parking Lot I', 8.99, 95, '2023-06-26 20:30:00', NULL),
+('a6e95c8e-0c2d-432f-b41b-9574e8d6d159', 'Parking Lot J', 10.00, 100, '2023-06-26 21:45:00', NULL);
