@@ -42,7 +42,7 @@ function EditToolbar(props) {
 
   return (
     <GridToolbarContainer>
-      <Button color="primary" startIcon={<AddIcon />} onClick={handleClick}>
+      <Button sx={{ color: 'green', marginBottom: '20px' }} startIcon={<AddIcon />} onClick={handleClick}>
         Adicionar Cliente
       </Button>
     </GridToolbarContainer>
@@ -76,6 +76,15 @@ export default function Grid() {
 
   const handleDeleteClick = (id) => () => {
     setRows(rows.filter((row) => row.id !== id));
+
+    axios.delete(`http://localhost:8080/api/client/${id}`, 
+  )
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   };
 
   const handleCancelClick = (id) => () => {
@@ -93,6 +102,25 @@ export default function Grid() {
   const processRowUpdate = (newRow) => {
     const updatedRow = { ...newRow, isNew: false };
     setRows(rows.map((row) => (row.id === newRow.id ? updatedRow : row)));
+    
+    axios.post('http://localhost:8080/api/client', {
+      "userId": "6fdbe654-95fb-4d06-bb0b-207721d7f2f2",
+      "planId": "6fdbe654-95fb-4d06-bb0b-207721d7f2f2",
+      "name": newRow.name,
+      "phoneNumber": newRow.phoneNumber,
+      "cpf": newRow.cpf,
+      "gender": newRow.gender,
+      "birthDate": "1995-12-05T00:00:00.000Z",
+      "createdAt": null,
+      "updatedAt": "1995-12-05T00:00:00.000Z"
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
     return updatedRow;
   };
 
@@ -107,14 +135,6 @@ export default function Grid() {
       headerName: 'CPF',
       type: 'string',
       width: 180,
-      align: 'left',
-      headerAlign: 'left',
-    },
-    {
-      field: 'email',
-      headerName: 'Email',
-      type: 'string',
-      width: 240,
       align: 'left',
       headerAlign: 'left',
       editable: true,
@@ -134,6 +154,7 @@ export default function Grid() {
       type: 'string',
       align: 'left',
       headerAlign: 'left',
+      editable: true,
     },
     {
       field: 'createdAt',
@@ -142,6 +163,45 @@ export default function Grid() {
       width: 180,
       align: 'left',
       headerAlign: 'left',
+      editable: true,
+    },
+    {
+      field: 'updatedAt',
+      headerName: 'Atualizado',
+      type: 'string',
+      width: 180,
+      align: 'left',
+      headerAlign: 'left',
+      editable: true,
+    },
+    {
+      field: 'gender',
+      headerName: 'Gênero',
+      type: 'singleSelect',
+      width: 180,
+      align: 'left',
+      headerAlign: 'left',
+      editable: true,
+      valueOptions: [
+        { value: 'Female', label: 'Feminino' },
+        { value: 'Male', label: 'Masculino' },
+      ],
+    },
+    {
+      field: 'planId',
+      headerName: 'Tipo de plano',
+      type: 'singleSelect',
+      width: 180,
+      align: 'left',
+      headerAlign: 'left',
+      valueOptions: [
+        { value: 'semplano', label: 'Sem plano' },
+        { value: 'mensal', label: 'Mensal' },
+        { value: 'trimestral', label: 'Trimestral' },
+        { value: 'semestral', label: 'Semestral' },
+        { value: 'anual', label: 'Anual' },
+      ],
+      editable: true,
     },
     {
       field: 'actions',
@@ -200,7 +260,7 @@ export default function Grid() {
       })} */}
       <Box
         sx={{
-          height: 500,
+          height: '100%',
           width: '100%',
           '& .actions': {
             color: 'text.secondary',
