@@ -1,0 +1,135 @@
+CREATE TABLE addresses (
+    id VARCHAR(255) NOT NULL,
+    street VARCHAR(50) NOT NULL,
+    city VARCHAR(50) NOT NULL,
+    uf CHAR(2) NOT NULL,
+    zipCode CHAR(8) NOT NULL,
+    createdAt DATETIME,
+    updatedAt DATETIME,
+
+    CONSTRAINT addresses_pkey PRIMARY KEY CLUSTERED (id)
+);
+
+CREATE TABLE clients (
+    id VARCHAR(255) NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    phoneNumber VARCHAR(15),
+    cpf CHAR(11) NOT NULL,
+    gender VARCHAR(20),
+    birthDate DATETIME,
+    createdAt DATETIME NOT NULL CONSTRAINT clients_createdAt_df DEFAULT CURRENT_TIMESTAMP,
+    updatedAt DATETIME,
+    planId VARCHAR(255),
+    userId VARCHAR(255) NOT NULL,
+
+    CONSTRAINT clients_pkey PRIMARY KEY CLUSTERED (id),
+    CONSTRAINT clients_email_key UNIQUE NONCLUSTERED (email),
+    CONSTRAINT clients_cpf_key UNIQUE NONCLUSTERED (cpf)
+);
+
+CREATE TABLE clientsVehicles (
+    id VARCHAR(255) NOT NULL,
+    vehicleId VARCHAR(255) NOT NULL,
+    createdAt DATETIME NOT NULL CONSTRAINT clientsVehicles_createdAt_df DEFAULT CURRENT_TIMESTAMP,
+    updatedAt DATETIME,
+    clientId VARCHAR(255) NOT NULL,
+
+    CONSTRAINT clientsVehicles_pkey PRIMARY KEY CLUSTERED (id)
+);
+
+CREATE TABLE parkingLot (
+    id VARCHAR(255) NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    amountPerHour DECIMAL(10,2) NOT NULL,
+    capacity INT NOT NULL,
+    createdAt DATETIME NOT NULL ,
+    updatedAt DATETIME,
+
+    CONSTRAINT parkingLot_pkey PRIMARY KEY CLUSTERED (id)
+);
+
+CREATE TABLE payments (
+    id VARCHAR(255) NOT NULL,
+    amount DECIMAL(10,2) NOT NULL,
+    paymentDate DATETIME,
+    reservationId VARCHAR(255) NOT NULL,
+    createdAt DATETIME NOT NULL ,
+    updatedAt DATETIME,
+    clientId VARCHAR(255),
+
+    CONSTRAINT payments_pkey PRIMARY KEY CLUSTERED (id)
+);
+
+CREATE TABLE [plan] (
+    id VARCHAR(255) NOT NULL,
+    amount DECIMAL(10,2) NOT NULL,
+    finalDate DATETIME,
+    createdAt DATETIME NOT NULL CONSTRAINT plan_createdAt_df DEFAULT CURRENT_TIMESTAMP,
+    updatedAt DATETIME,
+
+    CONSTRAINT plan_pkey PRIMARY KEY CLUSTERED (id)
+);
+
+CREATE TABLE reservations (
+    id VARCHAR(255) NOT NULL,
+    startTime DATETIME NOT NULL,
+    endTime DATETIME ,
+    createdAt DATETIME,
+    updatedAt DATETIME,
+    vehicleId VARCHAR(255) NOT NULL,
+    parkingId VARCHAR(255) NOT NULL,
+    clientId VARCHAR(255),
+
+    CONSTRAINT reservations_pkey PRIMARY KEY CLUSTERED (id)
+);
+
+CREATE TABLE users (
+    id VARCHAR(255) NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    email NVARCHAR(50) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    lastAccess DATETIME,
+    createdAt DATETIME NOT NULL ,
+    updatedAt DATETIME,
+    addressId VARCHAR(255),
+
+    CONSTRAINT users_pkey PRIMARY KEY CLUSTERED (id),
+    CONSTRAINT users_email_key UNIQUE NONCLUSTERED (email)
+);
+
+CREATE TABLE vehicles (
+    id VARCHAR(255) NOT NULL,
+    clientId VARCHAR(255) NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    plate CHAR(7) NOT NULL,
+    createdAt DATETIME NOT NULL CONSTRAINT vehicles_createdAt_df DEFAULT CURRENT_TIMESTAMP,
+    updatedAt DATETIME,
+    planId VARCHAR(255),
+
+    CONSTRAINT vehicles_pkey PRIMARY KEY CLUSTERED (id)
+);
+
+ALTER TABLE [dbo].[users] ADD CONSTRAINT [users_addressId_fkey] FOREIGN KEY ([addressId]) REFERENCES [dbo].[addresses]([id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+ALTER TABLE [dbo].[reservations] ADD CONSTRAINT [reservations_clientId_fkey] FOREIGN KEY ([clientId]) REFERENCES [dbo].[clients]([id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+ALTER TABLE [dbo].[reservations] ADD CONSTRAINT [reservations_parkingId_fkey] FOREIGN KEY ([parkingId]) REFERENCES [dbo].[parkingLot]([id]) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+ALTER TABLE [dbo].[reservations] ADD CONSTRAINT [reservations_vehicleId_fkey] FOREIGN KEY ([vehicleId]) REFERENCES [dbo].[vehicles]([id]) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+ALTER TABLE [dbo].[payments] ADD CONSTRAINT [payments_clientId_fkey] FOREIGN KEY ([clientId]) REFERENCES [dbo].[clients]([id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+ALTER TABLE [dbo].[payments] ADD CONSTRAINT [payments_reservationId_fkey] FOREIGN KEY ([reservationId]) REFERENCES [dbo].[reservations]([id]) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+ALTER TABLE [dbo].[clients] ADD CONSTRAINT [clients_planId_fkey] FOREIGN KEY ([planId]) REFERENCES [dbo].[plan]([id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+ALTER TABLE [dbo].[clients] ADD CONSTRAINT [clients_userId_fkey] FOREIGN KEY ([userId]) REFERENCES [dbo].[users]([id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+ALTER TABLE [dbo].[vehicles] ADD CONSTRAINT [vehicles_clientId_fkey] FOREIGN KEY ([clientId]) REFERENCES [dbo].[clients]([id]) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+ALTER TABLE [dbo].[vehicles] ADD CONSTRAINT [vehicles_planId_fkey] FOREIGN KEY ([planId]) REFERENCES [dbo].[plan]([id]) ON DELETE SET NULL ON UPDATE CASCADE;
+
+ALTER TABLE [dbo].[clientsVehicles] ADD CONSTRAINT [clientsVehicles_clientId_fkey] FOREIGN KEY ([clientId]) REFERENCES [dbo].[clients]([id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+ALTER TABLE [dbo].[clientsVehicles] ADD CONSTRAINT [clientsVehicles_vehicleId_fkey] FOREIGN KEY ([vehicleId]) REFERENCES [dbo].[vehicles]([id]) ON DELETE NO ACTION ON UPDATE CASCADE;
