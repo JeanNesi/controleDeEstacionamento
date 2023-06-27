@@ -6,5 +6,6 @@ CREATE TABLE vehicles (
     createdAt DATETIME NOT NULL CONSTRAINT vehicles_createdAt_df DEFAULT CURRENT_TIMESTAMP,
     updatedAt DATETIME,
     planId VARCHAR(MAX),
+
     CONSTRAINT vehicles_pkey PRIMARY KEY CLUSTERED (id)
 );
