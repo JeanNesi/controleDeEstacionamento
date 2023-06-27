@@ -4,22 +4,22 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
-    DECLARE @planId UNIQUEIDENTIFIER, @clientId UNIQUEIDENTIFIER, @amount DECIMAL(10, 2);
+    DECLARE @planId NVARCHAR(1000), @clientId NVARCHAR(1000), @amount DECIMAL(10, 2);
     DECLARE @startTime DATETIME, @endTime DATETIME, @totalHours DECIMAL(10, 2), @totalAmount DECIMAL(10, 2);
 
-    -- Variáveis para armazenar os resultados
+    -- VariÃ¡veis para armazenar os resultados
     DECLARE @placa CHAR(7), @mensalista VARCHAR(3), @plano_ativo VARCHAR(3), @nome_cliente VARCHAR(100);
     DECLARE @valor_arrecadado DECIMAL(10, 2), @valor_a_pagar DECIMAL(10, 2);
 
-    -- Obter placa do veículo
+    -- Obter placa do veÃ­culo
     SET @placa = @plate;
 
-    -- Verificar se o veículo é mensalista
-    SET @mensalista = (CASE WHEN EXISTS (SELECT 1 FROM vehicles WHERE plate = @placa AND planId IS NOT NULL) THEN 'Sim' ELSE 'Não' END);
+    -- Verificar se o veÃ­culo Ã© mensalista
+    SET @mensalista = (CASE WHEN EXISTS (SELECT 1 FROM vehicles WHERE plate = @placa AND planId IS NOT NULL) THEN 'Sim' ELSE 'NÃ£o' END);
 
-    -- Verificar se o plano está ativo
+    -- Verificar se o plano estÃ¡ ativo
     SET @planId = (SELECT planId FROM vehicles WHERE plate = @placa);
-    SET @plano_ativo = (CASE WHEN @planId IS NOT NULL AND EXISTS (SELECT 1 FROM plans WHERE id = @planId AND finalDate >= GETDATE()) THEN 'Sim' ELSE 'Não' END);
+    SET @plano_ativo = (CASE WHEN @planId IS NOT NULL AND EXISTS (SELECT 1 FROM [plan] WHERE id = @planId AND finalDate >= GETDATE()) THEN 'Sim' ELSE 'NÃ£o' END);
 
     -- Obter o nome do cliente
     SET @nome_cliente = (SELECT name FROM clients WHERE id = (SELECT clientId FROM vehicles WHERE plate = @placa));
@@ -29,11 +29,11 @@ BEGIN
     SET @valor_arrecadado = (SELECT SUM(amount) FROM payments WHERE clientId = @clientId);
 
     -- Obter o valor a pagar
-    SET @amount = (SELECT amount FROM plans WHERE id = @planId);
-    SET @startTime = (SELECT startTime FROM reservations WHERE vehicleId = (SELECT id FROM vehicles WHERE plate = @placa));
-    SET @endTime = (SELECT endTime FROM reservations WHERE vehicleId = (SELECT id FROM vehicles WHERE plate = @placa));
+    SET @amount = (SELECT amount FROM [plan] WHERE id = @planId);
+	SET @startTime = (SELECT TOP 1 startTime FROM reservations WHERE vehicleId = (SELECT id FROM vehicles WHERE plate = @placa) ORDER BY startTime);
+	SET @endTime = (SELECT TOP 1 endTime FROM reservations WHERE vehicleId = (SELECT id FROM vehicles WHERE plate = @placa) ORDER BY endTime DESC);
     SET @totalHours = DATEDIFF(HOUR, @startTime, @endTime);
-    SET @totalAmount = (SELECT amountPerHour * @totalHours FROM parkingLott WHERE id = (SELECT parkingId FROM reservations WHERE vehicleId = (SELECT id FROM vehicles WHERE plate = @placa)));
+	SET @totalAmount = (SELECT SUM(amountPerHour * @totalHours) FROM parkingLot WHERE id IN (SELECT parkingId FROM reservations WHERE vehicleId = (SELECT id FROM vehicles WHERE plate = @placa)));
     SET @valor_a_pagar = @totalAmount + @amount;
 
     -- Retornar os resultados
@@ -41,5 +41,4 @@ BEGIN
            @valor_arrecadado AS Valor_arrecadado, @valor_a_pagar AS Valor_a_pagar;
 END;
 
-EXEC GerarRelatorio @plate = 'ABC1234';
-
+EXEC GerarRelatorio @plate = 'JKL3456';
