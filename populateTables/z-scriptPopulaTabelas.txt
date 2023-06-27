@@ -24,31 +24,31 @@ VALUES
 ('4fa65f58-daf7-4f6f-8d24-59a1e430f6f5', 'Daniel Clark', 'danielclark@example.com', 'password789', '2023-06-26 20:30:00', '2023-06-26 20:30:00', NULL, '4fa65f58-daf7-4f6f-8d24-59a1e430f6f5'),
 ('a6e95c8e-0c2d-432f-b41b-9574e8d6d159', 'Sophia Johnson', 'sophiajohnson@example.com', 'securepass123', '2023-06-26 21:45:00', '2023-06-26 21:45:00', NULL, 'a6e95c8e-0c2d-432f-b41b-9574e8d6d159');
 
-INSERT INTO [plan] (id, amount, finalDate, createdAt, updatedAt)
+INSERT INTO [plan] (id, amount, finalDate, createdAt, updatedAt, name)
 VALUES
-('3dcee5c3-16e3-4be4-a8e4-0fb0c2a4e13c', 50.00, '2023-07-26', '2023-06-26 10:00:00', NULL),
-('fd5b7c1f-12c9-4fd7-9c5c-4eb228a8c456', 30.00, '2023-08-26', '2023-06-26 11:30:00', NULL),
-('8b4c1c27-73fb-4a67-a8cd-ff77e96fc0e9', 40.00, '2023-09-26', '2023-06-26 12:45:00', NULL),
-('2aa869c4-4d6a-4030-b2c7-50e6be8d8579', 60.00, '2023-10-26', '2023-06-26 14:15:00', NULL),
-('95e6b1ce-0495-4b6d-9f62-9c5e9cc6a7a3', 35.00, '2023-11-26', '2023-06-26 15:30:00', NULL),
-('6fdbe654-95fb-4d06-bb0b-207721d7f2f2', 55.00, '2023-12-26', '2023-06-26 16:45:00', NULL),
-('78c6d8a3-fc4d-4125-8a4a-aa09f4323ed9', 25.00, '2024-01-26', '2023-06-26 18:00:00', NULL),
-('96fb09a1-8c1f-4f39-b315-4420de23e9a0', 45.00, '2024-02-26', '2023-06-26 19:15:00', NULL),
-('4fa65f58-daf7-4f6f-8d24-59a1e430f6f5', 32.00, '2024-03-26', '2023-06-26 20:30:00', NULL),
-('a6e95c8e-0c2d-432f-b41b-9574e8d6d159', 48.00, '2024-04-26', '2023-06-26 21:45:00', NULL);
+('3dcee5c3-16e3-4be4-a8e4-0fb0c2a4e13c', 50.00, '2023-07-26', '2023-06-26 10:00:00', NULL, 'Plano Mensal'),
+('fd5b7c1f-12c9-4fd7-9c5c-4eb228a8c456', 30.00, '2023-08-26', '2023-06-26 11:30:00', NULL, 'Plano Trimestral'),
+('8b4c1c27-73fb-4a67-a8cd-ff77e96fc0e9', 40.00, '2023-09-26', '2023-06-26 12:45:00', NULL, 'Plano Mensal'),
+('2aa869c4-4d6a-4030-b2c7-50e6be8d8579', 60.00, '2023-10-26', '2023-06-26 14:15:00', NULL, 'Plano Semestral'),
+('95e6b1ce-0495-4b6d-9f62-9c5e9cc6a7a3', 35.00, '2023-11-26', '2023-06-26 15:30:00', NULL, 'Plano Mensal'),
+('6fdbe654-95fb-4d06-bb0b-207721d7f2f2', 55.00, '2023-12-26', '2023-06-26 16:45:00', NULL, 'Plano Trimestral'),
+('78c6d8a3-fc4d-4125-8a4a-aa09f4323ed9', 25.00, '2024-01-26', '2023-06-26 18:00:00', NULL, 'Plano Mensal'),
+('96fb09a1-8c1f-4f39-b315-4420de23e9a0', 45.00, '2024-02-26', '2023-06-26 19:15:00', NULL, 'Plano Semestral'),
+('4fa65f58-daf7-4f6f-8d24-59a1e430f6f5', 32.00, '2024-03-26', '2023-06-26 20:30:00', NULL, 'Plano Mensal'),
+('a6e95c8e-0c2d-432f-b41b-9574e8d6d159', 48.00, '2024-04-26', '2023-06-26 21:45:00', NULL, 'Plano Trimestral');
 
-INSERT INTO clients (id, name, email, phoneNumber, cpf, gender, birthDate, createdAt, updatedAt, planId, userId)
+INSERT INTO clients (id, name, phoneNumber, cpf, gender, birthDate, createdAt, updatedAt, planId, userId)
 VALUES
-('zdcee5c3-16e3-4be4-a8e4-0fb0c2a4e13c', 'John Doe', 'johndoe@example.com', '1234567890', '34345678901', 'Male', '1990-01-01', '2023-06-26 10:00:00', NULL, '3dcee5c3-16e3-4be4-a8e4-0fb0c2a4e13c', '3dcee5c3-16e3-4be4-a8e4-0fb0c2a4e13c'),
-('zd5b7c1f-12c9-4fd7-9c5c-4eb228a8c456', 'Jane Smith', 'janesmith@example.com', '9876543210', '98765432109', 'Female', '1992-03-15', '2023-06-26 11:30:00', NULL, 'fd5b7c1f-12c9-4fd7-9c5c-4eb228a8c456', 'fd5b7c1f-12c9-4fd7-9c5c-4eb228a8c456'),
-('zb4c1c27-73fb-4a67-a8cd-ff77e96fc0e9', 'Robert Johnson', 'robertjohnson@example.com', '4567891230', '45678912345', 'Male', '1985-06-10', '2023-06-26 12:45:00', NULL, '8b4c1c27-73fb-4a67-a8cd-ff77e96fc0e9', '8b4c1c27-73fb-4a67-a8cd-ff77e96fc0e9'),
-('zaa869c4-4d6a-4030-b2c7-50e6be8d8579', 'Emily Davis', 'emilydavis@example.com', '6543219870', '65432198765', 'Female', '1998-09-20', '2023-06-26 14:15:00', NULL, '2aa869c4-4d6a-4030-b2c7-50e6be8d8579', '2aa869c4-4d6a-4030-b2c7-50e6be8d8579'),
-('z5e6b1ce-0495-4b6d-9f62-9c5e9cc6a7a3', 'Michael Wilson', 'michaelwilson@example.com', '7894561230', '78945612345', 'Male', '1995-12-05', '2023-06-26 15:30:00', NULL, '95e6b1ce-0495-4b6d-9f62-9c5e9cc6a7a3', '95e6b1ce-0495-4b6d-9f62-9c5e9cc6a7a3'),
-('zfdbe654-95fb-4d06-bb0b-207721d7f2f2', 'Olivia Anderson', 'oliviaanderson@example.com', '3216549870', '32165498765', 'Female', '1991-07-25', '2023-06-26 16:45:00', NULL, '6fdbe654-95fb-4d06-bb0b-207721d7f2f2', '6fdbe654-95fb-4d06-bb0b-207721d7f2f2'),
-('z8c6d8a3-fc4d-4125-8a4a-aa09f4323ed9', 'William Thompson', 'williamthompson@example.com', '9876543210', '98665432109', 'Male', '1987-04-12', '2023-06-26 18:00:00', NULL, '78c6d8a3-fc4d-4125-8a4a-aa09f4323ed9', '78c6d8a3-fc4d-4125-8a4a-aa09f4323ed9'),
-('z6fb09a1-8c1f-4f39-b315-4420de23e9a0', 'Sophia Martin', 'sophiamartin@example.com', '1234567890', '12145678901', 'Female', '1994-02-18', '2023-06-26 19:15:00', NULL, '96fb09a1-8c1f-4f39-b315-4420de23e9a0', '96fb09a1-8c1f-4f39-b315-4420de23e9a0'),
-('zfa65f58-daf7-4f6f-8d24-59a1e430f6f5', 'Daniel Wilson', 'danielwilson@example.com', '9176543210', '98165432109', 'Male', '1983-11-30', '2023-06-26 20:30:00', NULL, '4fa65f58-daf7-4f6f-8d24-59a1e430f6f5', '4fa65f58-daf7-4f6f-8d24-59a1e430f6f5'),
-('z6e95c8e-0c2d-432f-b41b-9574e8d6d159', 'Mia Taylor', 'miataylor@example.com', '1234567890', '12245678901', 'Female', '1997-08-22', '2023-06-26 21:45:00', NULL, 'a6e95c8e-0c2d-432f-b41b-9574e8d6d159', 'a6e95c8e-0c2d-432f-b41b-9574e8d6d159');
+('zdcee5c3-16e3-4be4-a8e4-0fb0c2a4e13c', 'John Doe', '1234567890', '34345678901', 'Male', '1990-01-01', '2023-06-26 10:00:00', NULL, '3dcee5c3-16e3-4be4-a8e4-0fb0c2a4e13c', '3dcee5c3-16e3-4be4-a8e4-0fb0c2a4e13c'),
+('zd5b7c1f-12c9-4fd7-9c5c-4eb228a8c456', 'Jane Smith', '9876543210', '98765432109', 'Female', '1992-03-15', '2023-06-26 11:30:00', NULL, 'fd5b7c1f-12c9-4fd7-9c5c-4eb228a8c456', 'fd5b7c1f-12c9-4fd7-9c5c-4eb228a8c456'),
+('zb4c1c27-73fb-4a67-a8cd-ff77e96fc0e9', 'Robert Johnson', '4567891230', '45678912345', 'Male', '1985-06-10', '2023-06-26 12:45:00', NULL, '8b4c1c27-73fb-4a67-a8cd-ff77e96fc0e9', '8b4c1c27-73fb-4a67-a8cd-ff77e96fc0e9'),
+('zaa869c4-4d6a-4030-b2c7-50e6be8d8579', 'Emily Davis', '6543219870', '65432198765', 'Female', '1998-09-20', '2023-06-26 14:15:00', NULL, '2aa869c4-4d6a-4030-b2c7-50e6be8d8579', '2aa869c4-4d6a-4030-b2c7-50e6be8d8579'),
+('z5e6b1ce-0495-4b6d-9f62-9c5e9cc6a7a3', 'Michael Wilson', '7894561230', '78945612345', 'Male', '1995-12-05', '2023-06-26 15:30:00', NULL, '95e6b1ce-0495-4b6d-9f62-9c5e9cc6a7a3', '95e6b1ce-0495-4b6d-9f62-9c5e9cc6a7a3'),
+('zfdbe654-95fb-4d06-bb0b-207721d7f2f2', 'Olivia Anderson', '3216549870', '32165498765', 'Female', '1991-07-25', '2023-06-26 16:45:00', NULL, '6fdbe654-95fb-4d06-bb0b-207721d7f2f2', '6fdbe654-95fb-4d06-bb0b-207721d7f2f2'),
+('z8c6d8a3-fc4d-4125-8a4a-aa09f4323ed9', 'William Thompson', '9876543210', '98665432109', 'Male', '1987-04-12', '2023-06-26 18:00:00', NULL, '78c6d8a3-fc4d-4125-8a4a-aa09f4323ed9', '78c6d8a3-fc4d-4125-8a4a-aa09f4323ed9'),
+('z6fb09a1-8c1f-4f39-b315-4420de23e9a0', 'Sophia Martin', '1234567890', '12145678901', 'Female', '1994-02-18', '2023-06-26 19:15:00', NULL, '96fb09a1-8c1f-4f39-b315-4420de23e9a0', '96fb09a1-8c1f-4f39-b315-4420de23e9a0'),
+('zfa65f58-daf7-4f6f-8d24-59a1e430f6f5', 'Daniel Wilson', '9176543210', '98165432109', 'Male', '1983-11-30', '2023-06-26 20:30:00', NULL, '4fa65f58-daf7-4f6f-8d24-59a1e430f6f5', '4fa65f58-daf7-4f6f-8d24-59a1e430f6f5'),
+('z6e95c8e-0c2d-432f-b41b-9574e8d6d159', 'Mia Taylor', '1234567890', '12245678901', 'Female', '1997-08-22', '2023-06-26 21:45:00', NULL, 'a6e95c8e-0c2d-432f-b41b-9574e8d6d159', 'a6e95c8e-0c2d-432f-b41b-9574e8d6d159');
 
 INSERT INTO parkingLot (id, name, amountPerHour, capacity, createdAt, updatedAt)
 VALUES
