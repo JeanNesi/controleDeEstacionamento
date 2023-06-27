@@ -1,0 +1,36 @@
+--4- Diferença de valores e quantidades de receita gerada por estacionamentos tanto com valor por hora quanto planos.
+-- Criação dos índices
+CREATE INDEX idx_payments_reservationId ON payments (reservationId);
+CREATE INDEX idx_reservations_clientId ON reservations (clientId);
+CREATE INDEX idx_clients_planIdd ON clients (planId);
+CREATE INDEX idx_plan_id ON [plan] (id);
+
+-- Consulta otimizada
+WITH Valores(plano, receita, totalSemPlanos, totalPlanos) AS
+(
+    SELECT
+        p.id AS plano,
+        SUM(pay.amount) AS receita,
+        SUM(CASE WHEN p.id is null THEN pay.amount ELSE 0 END) AS totalSemPlanos,
+        SUM(CASE WHEN p.id is not null THEN pay.amount ELSE 0 END) AS totalPlanos
+    FROM
+        payments pay
+        INNER JOIN reservations r ON r.id = pay.reservationId
+        INNER JOIN clients c ON c.id = r.clientId
+        INNER JOIN [plan] p ON c.planId = p.id
+    WHERE
+        r.startTime BETWEEN '2021-07-06 00:00:00.000' AND '2024-07-06 00:00:00.000'
+    GROUP BY
+        p.id
+)
+SELECT
+    (SELECT SUM(receita) FROM Valores) as TotalRendido,
+    totalSemPlanos,
+    totalPlanos,
+    plano
+FROM
+    Valores
+GROUP BY
+    plano,
+    totalSemPlanos,
+    totalPlanos;

@@ -1,0 +1,25 @@
+--3-Quais são os planos mais populares entre os clientes que passam o período noturno e possuem mais de um veículo?
+--Criação de indices
+CREATE INDEX idx_plans_id ON [plan] (id);
+CREATE INDEX idx_clients_planId ON clients (planId);
+CREATE INDEX idx_clientsVehicles_clientId ON clientsVehicles (clientId);
+CREATE INDEX idx_payments_clientId ON payments (clientId);
+CREATE INDEX idx_reservations_id ON reservations (id);
+
+-- Consulta otimizada
+WITH topPlan (Planos, Veiculos) AS
+(
+    SELECT p.name AS Planos, COUNT(*) AS Veiculos
+    FROM [plan] p
+    INNER JOIN clients c ON c.planId = p.id
+    INNER JOIN clientsVehicles v ON c.id = v.clientId
+    INNER JOIN payments pay ON pay.clientId = c.id
+    INNER JOIN reservations r ON r.id = pay.reservationId
+    WHERE DATEPART(HOUR, r.startTime) >= 8 OR DATEPART(HOUR, r.startTime) <= 6
+    GROUP BY p.name
+)
+SELECT TOP 3 Planos AS 'Planos noturnos mais populares'
+FROM topPlan
+GROUP BY Planos, Veiculos
+HAVING Veiculos >= 2
+ORDER BY Veiculos;

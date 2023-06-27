@@ -1,0 +1,22 @@
+--1- Quantos pagamentos foram feitos de planos(mensais, semanais e etc...) e sem planos em determinado período.
+-- Criação dos índices
+CREATE INDEX idx_payments_paymentDate ON payments (paymentDate);
+CREATE INDEX idx_clients_planId ON clients (planId);
+CREATE INDEX idx_plans_id ON [plan] (id);
+
+-- Consulta otimizada
+SELECT
+    CASE 
+        WHEN p.id IS NULL THEN '0' 
+        WHEN p.id IS NOT NULL THEN p.id 
+    END AS 'Planos',
+    COUNT(*) AS 'Total de pagamento por planos'
+FROM
+    payments AS pay
+LEFT JOIN
+    clients AS c ON pay.clientId = c.id
+LEFT JOIN
+    [plan] AS p ON c.planId = p.id
+WHERE pay.paymentDate BETWEEN '2023-01-01 00:00:00.000' AND GETDATE()
+GROUP BY 
+    p.id;

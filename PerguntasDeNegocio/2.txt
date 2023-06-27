@@ -1,0 +1,29 @@
+--2- Qual o horário de pico de cada estacionamento? Obs: Utilizar intervalo de 1h. Por exemplo das 14h as 15h.
+
+-- Criação dos índices
+CREATE INDEX idx_reservations_parkingId_startTime ON reservations (parkingId, startTime);
+CREATE INDEX idx_parkingLot_id ON parkingLot (id);
+
+-- Consulta otimizada
+SELECT
+    pl.id AS 'ID Estacionamento',
+    CONCAT(StartHour, ':00 - ', SUM(StartHour + 1), ':00') AS 'Horário de Maior Pico'
+FROM
+    (
+        SELECT
+            res.parkingId,
+            DATEPART(HOUR, res.startTime) AS StartHour,
+            ROW_NUMBER() OVER (PARTITION BY res.parkingId ORDER BY COUNT(*) DESC) AS RowNumber
+        FROM
+            reservations AS res
+        GROUP BY
+            res.parkingId,
+            DATEPART(HOUR, res.startTime)
+    ) AS aux
+INNER JOIN
+    parkingLot AS pl ON aux.parkingId = pl.id
+WHERE
+    aux.RowNumber = 1
+GROUP BY
+    pl.id,
+    aux.StartHour;
