@@ -4,11 +4,15 @@ import clientController from './controllers/client/clientController'
 import userController from './controllers/user/userController'
 import vehicleController from './controllers/vehicle/vehicleController'
 import planController from './controllers/plan/planController'
+import paymentController from './controllers/payment/paymentController'
 const router = Router();
 
 router.get('/', (req: Request, res: Response) => {
   res.send('Hello word');
 })
+
+
+router.get('/report/:placa', paymentController.getReport)
 
 router.post('/client/', clientController.postClient)
 router.put('/client/:id', clientController.putClient)
