@@ -15,11 +15,10 @@
 ### Modelo Físico:
 Utilizado https://dbdiagram.io/<br>
 <br>https://dbdiagram.io/d/64890510722eb77494e9af66</br>
-<code>![Copy of Untitled Diagram](https://github.com/JeanNesi/controleDeEstacionamento/assets/102368879/f591ef90-606d-4384-a52a-e6823d6a8a4a)</code>
+<code>(![image](https://github.com/JeanNesi/controleDeEstacionamento/assets/98506943/f81f953f-7b71-4121-846f-6c121f6387e5))</code>
 
 
 ### Dicionário de Dados:
-<code>Excel ou tabela do Github (markdown)</code>
 Link PDF: https://docs.google.com/spreadsheets/d/e/2PACX-1vSVwwoesxQ3KJ2fPSw9dzwcFo78VBMPH67JbzX3r_njpgDXnTr5BGfKWPLA_PjakYipvN7zS6PNFpGL/pub?output=pdf
 Link Google Shetts: https://docs.google.com/spreadsheets/d/1WUYTASfX49KInMTQkbXf5RoHuNEFaaON1TP2quygtZE/edit?usp=sharing
 
