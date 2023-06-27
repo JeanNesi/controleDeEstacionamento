@@ -6,4 +6,6 @@ CREATE TABLE payments (
     createdAt DATETIME NOT NULL ,
     updatedAt DATETIME,
     clientId VARCHAR(MAX),
+
+    CONSTRAINT payments_pkey PRIMARY KEY CLUSTERED (id)
 );
