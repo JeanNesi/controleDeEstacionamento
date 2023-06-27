@@ -27,11 +27,12 @@ Link Google Shetts: https://docs.google.com/spreadsheets/d/1WUYTASfX49KInMTQkbXf
 <code>Pasta CreateTables</code>
 
 ### Scripts Popula tabelas:
-[Documentação](https://github.com/JeanNesi/controleDeEstacionamento/blob/main/populateTables/z-scriptPopulaTabelas.txt)
+[Script que popula as tabelas](https://github.com/JeanNesi/controleDeEstacionamento/blob/main/populateTables/z-scriptPopulaTabelas.txt)
 
 ### Objetos de BD (stored procedure, triggers e functions):
 <code>database programming</code>
   
 ### Código do sistema:
 Linguagem de Programação React/NodeJS<br>
-<code>Pastas client e server</code>
+[Client](https://github.com/JeanNesi/controleDeEstacionamento/tree/main/client)
+[Server](https://github.com/JeanNesi/controleDeEstacionamento/tree/main/server)
