@@ -3,8 +3,9 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlserver"
   url      = env("DATABASE_URL")
+  shadowDatabaseUrl = env("DATABASE_URL")
 }
 
 model addresses {
@@ -27,8 +28,9 @@ model users {
   createdAt  DateTime   @default(now())
   updatedAt  DateTime?
   addressId  String?
-  clients    clients[]
-  address    addresses? @relation(fields: [addressId], references: [id])
+  address    addresses? @relation(fields: [addressId], references: [id], onUpdate: NoAction, onDelete: NoAction)
+
+  clients clients[]
 }
 
 model reservations {
@@ -39,11 +41,13 @@ model reservations {
   updatedAt DateTime?
   vehicleId String
   parkingId String
-  clientId  String?
   payments  payments[]
-  client    clients?   @relation(fields: [clientId], references: [id])
-  parking   parkingLot @relation(fields: [parkingId], references: [id])
-  vehicle   vehicles   @relation(fields: [vehicleId], references: [id])
+
+  clientId String?
+  client   clients? @relation(fields: [clientId], references: [id], onUpdate: NoAction, onDelete: NoAction)
+
+  parking parkingLot @relation(fields: [parkingId], references: [id])
+  vehicle vehicles   @relation(fields: [vehicleId], references: [id])
 }
 
 model parkingLot {
@@ -57,31 +61,35 @@ model parkingLot {
 }
 
 model payments {
-  id            String       @id @default(uuid())
-  amount        Decimal      @db.Decimal(10, 2)
+  id            String    @id @default(uuid())
+  amount        Decimal   @db.Decimal(10, 2)
   paymentDate   DateTime?
   reservationId String
-  createdAt     DateTime     @default(now())
+  createdAt     DateTime  @default(now())
   updatedAt     DateTime?
   clientId      String?
-  client        clients?     @relation(fields: [clientId], references: [id])
-  reservation   reservations @relation(fields: [reservationId], references: [id])
+  client        clients?  @relation(fields: [clientId], references: [id], onUpdate: NoAction, onDelete: NoAction)
+
+  reservation reservations @relation(fields: [reservationId], references: [id])
 }
 
 model clients {
-  id              String            @id @default(uuid())
-  userId          String
-  planId          String?
-  name            String
-  email           String            @unique
-  phoneNumber     String
-  cpf             String            @unique
-  gender          String?
-  birthDate       DateTime?
-  createdAt       DateTime          @default(now())
-  updatedAt       DateTime?
-  plan            plan?             @relation(fields: [planId], references: [id])
-  user            users             @relation(fields: [userId], references: [id])
+  id          String    @id @default(uuid())
+  name        String
+  email       String    @unique
+  phoneNumber String
+  cpf         String    @unique
+  gender      String?
+  birthDate   DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime?
+  planId      String?
+
+  plan plan? @relation(fields: [planId], references: [id], onUpdate: NoAction, onDelete: NoAction)
+
+  userId String
+  user   users  @relation(fields: [userId], references: [id], onUpdate: NoAction, onDelete: NoAction)
+
   clientsVehicles clientsVehicles[]
   payment         payments[]
   reservation     reservations[]
@@ -104,12 +112,12 @@ model vehicles {
 
 model clientsVehicles {
   id        String    @id @default(uuid())
-  clientId  String
   vehicleId String
   createdAt DateTime  @default(now())
   updatedAt DateTime?
-  client    clients   @relation(fields: [clientId], references: [id])
-  vehicle   vehicles  @relation(fields: [vehicleId], references: [id])
+  clientId  String
+  client    clients   @relation(fields: [clientId], references: [id], onUpdate: NoAction, onDelete: NoAction)
+  vehicle vehicles @relation(fields: [vehicleId], references: [id])
 }
 
 model plan {
