@@ -24,14 +24,14 @@ Link PDF: https://docs.google.com/spreadsheets/d/e/2PACX-1vSVwwoesxQ3KJ2fPSw9dzw
 Link Google Shetts: https://docs.google.com/spreadsheets/d/1WUYTASfX49KInMTQkbXf5RoHuNEFaaON1TP2quygtZE/edit?usp=sharing
 
 ### Scripts DDL Criação do Database:
-<code>Pasta CreateTables</code>
+[Criação das tabelas](https://github.com/JeanNesi/controleDeEstacionamento/blob/main/CreateTables/creationOfTablesAndKeysComplete)
 
 ### Scripts Popula tabelas:
 [Script que popula as tabelas](https://github.com/JeanNesi/controleDeEstacionamento/blob/main/populateTables/z-scriptPopulaTabelas.txt)
 
 ### Objetos de BD (stored procedure, triggers e functions):
 <code>database programming</code>
-  
+
 ### Código do sistema:
 Linguagem de Programação React/NodeJS<br>
 [Client](https://github.com/JeanNesi/controleDeEstacionamento/tree/main/client)
