@@ -1,5 +1,5 @@
 CREATE TABLE clients (
-    id VARCHAR(MAX) NOT NULL,
+    id VARCHAR(255) NOT NULL,
     name VARCHAR(100) NOT NULL,
     email VARCHAR(50) NOT NULL,
     phoneNumber VARCHAR(15),
@@ -8,8 +8,8 @@ CREATE TABLE clients (
     birthDate DATETIME,
     createdAt DATETIME NOT NULL CONSTRAINT clients_createdAt_df DEFAULT CURRENT_TIMESTAMP,
     updatedAt DATETIME,
-    planId VARCHAR(MAX),
-    userId VARCHAR(MAX) NOT NULL,
+    planId VARCHAR(255),
+    userId VARCHAR(255) NOT NULL,
 
     CONSTRAINT clients_pkey PRIMARY KEY CLUSTERED (id),
     CONSTRAINT clients_email_key UNIQUE NONCLUSTERED (email),
