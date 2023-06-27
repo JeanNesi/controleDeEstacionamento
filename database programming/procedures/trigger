@@ -1,0 +1,10 @@
+CREATE TRIGGER saveClientToLog
+ON clients
+AFTER UPDATE
+AS
+BEGIN
+    -- Insere os dados do cliente na tabela clients_log
+    INSERT INTO clientsLog (clientId, action, name, phoneNumber, cpf, gender, birthDate, createdAt, updatedAt, planId, userId)
+    SELECT id, 'UPDATE', name, phoneNumber, cpf, gender, birthDate, createdAt, updatedAt, planId, userId
+    FROM inserted;
+END;
