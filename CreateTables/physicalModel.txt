@@ -1,0 +1,111 @@
+Table "addresses" {
+  "id" VARCHAR(255)
+  "street" VARCHAR(50)
+  "city" VARCHAR(50)
+  "uf" CHAR(2)
+  "zipCode" CHAR(8)
+  "createdAt" DATETIME 
+  "updatedAt" DATETIME
+}
+
+Table "users" {
+  "id" VARCHAR(255)
+  "name" VARCHAR(100) 
+  "email" VARCHAR(50) [unique]
+  "password" VARCHAR(255)
+  "lastAccess" DATETIME
+  "createdAt" DATETIME
+  "updatedAt" DATETIME
+  "addressId" VARCHAR(255)
+}
+
+Table "reservations" {
+  "id" VARCHAR(255)
+  "startTime" DATETIME
+  "endTime" DATETIME
+  "createdAt" DATETIME 
+  "updatedAt" DATETIME
+  "vehicleId" VARCHAR(255)
+  "userId" VARCHAR(255)
+  "parkingId" VARCHAR(255)
+}
+
+Table "parkingLott" {
+  "id"  VARCHAR(255)
+  "name" VARCHAR(100)
+  "amountPerHour" DECIMAL(10, 2)
+  "capacity" INT
+  "createdAt" DATETIME 
+  "updatedAt" DATETIME
+}
+
+Table "payments" {
+  "id" VARCHAR(255)
+  "amount" DECIMAL(10, 2)
+  "paymentDate" DATETIME 
+  "clientId" VARCHAR(255)
+  "reservationId" VARCHAR(255)
+  "createdAt" DATETIME [default: `CURRENT_DATETIME`]
+  "updatedAt" DATETIME
+}
+
+TABLE "clients" {
+  "id" VARCHAR(255)
+  "userId" VARCHAR(255)
+  "planId" VARCHAR(255)
+  "name" VARCHAR(100)
+  "email" VARCHAR(50) [unique]
+  "phoneNumber" VARCHAR(15)
+  "cpf" CHAR(11) [unique]
+  "gender" VARCHAR(20)
+  "birthDate" DATETIME 
+  "createdAt" DATETIME 
+  "updatedAt" DATETIME
+}
+
+TABLE "vehicles" {
+  "id" VARCHAR(255)
+  "clientId"  VARCHAR(255) 
+  "planId"  VARCHAR(255) 
+  "name" VARCHAR(100)
+  "plate" CHAR(7)
+  "createdAt" DATETIME
+  "updatedAt" DATETIME
+}
+
+TABLE "clientsVehicles" {
+  "id"  VARCHAR(255) 
+  "clientId"  VARCHAR(255)
+  "vehicleId"  VARCHAR(255)
+  "createdAt" DATETIME 
+  "updatedAt" DATETIME
+}
+
+TABLE "plans" {
+  "id"  VARCHAR(255) 
+  "name" VARCHAR(100)
+  "amount" DECIMAL(10, 2)
+  "finalDate" DATETIME
+  "createdAt" DATETIME
+  "updatedAt" DATETIME
+}
+
+Ref:"addresses"."id" < "users"."addressId"
+
+Ref:"users"."id" < "reservations"."userId"
+
+Ref:"parkingLott"."id" < "reservations"."parkingId"
+
+Ref: "clients"."id" < "payments"."clientId"
+
+Ref:"reservations"."id" < "payments"."reservationId"
+
+Ref: "users"."id" < "clients"."userId"
+
+Ref: "vehicles"."id" < "reservations"."vehicleId"
+
+Ref: "vehicles"."id" < "clientsVehicles"."vehicleId"
+
+Ref: "clients"."id" < "clientsVehicles"."clientId"
+
+Ref: "plans"."id" < "vehicles"."planId"
