@@ -1,0 +1,26 @@
+CREATE FUNCTION calculateTotalAmount(@reservationId VARCHAR(255))
+RETURNS DECIMAL(10, 2)
+AS
+BEGIN
+    DECLARE @totalAmount DECIMAL(10, 2);
+
+    -- Obtém a quantidade de horas reservadas para a reserva
+    DECLARE @hours INT;
+    SELECT @hours = DATEDIFF(HOUR, startTime, endTime)
+    FROM reservations
+    WHERE id = @reservationId;
+
+    -- Obtém o valor por hora do estacionamento para a reserva
+    DECLARE @amountPerHour DECIMAL(10, 2);
+    SELECT @amountPerHour = amountPerHour
+    FROM parkingLot
+    WHERE id = (SELECT parkingId FROM reservations WHERE id = @reservationId);
+
+    -- Calcula o valor total da reserva
+    SET @totalAmount = @hours * @amountPerHour;
+
+    RETURN @totalAmount;
+END;
+go
+
+SELECT dbo.calculateTotalAmount('fd5b7c1f-12c9-4fd7-9c5c-4eb228a8c456') AS TotalAmount;
