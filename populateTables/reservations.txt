@@ -1,20 +1,14 @@
--- Inserir dados na tabela "reservations"
-INSERT INTO reservations (id, startTime, endTime, createdAt, updatedAt, vehicleId, userId, parkingId)
+INSERT INTO reservations (id, startTime, endTime, createdAt, updatedAt, vehicleId, parkingId, clientId)
 VALUES
-  ('c3df564e-aa41-4d53-8a9b-61cc715df0da', '2023-06-07 10:00:00', '2023-06-07 12:00:00', CURRENT_TIMESTAMP, NULL, 'bf153ef7-baa9-4d8b-8a41-5c282e7e3b0e', 'a3ae17ef-c5e5-44e1-99a9-6a5f5a309212', '4a5f37fb-2c0a-4e65-a536-3b2124785b09'),
-  ('9e27f684-00a0-405f-90c0-cf0fd4d7a5e0', '2023-06-07 14:00:00', '2023-06-07 16:00:00', CURRENT_TIMESTAMP, NULL, '0b7a8911-f5eb-4ed9-95ae-4dc4c2006fd3', '1d598361-7f5e-44cc-8e7b-51c43906cead', '6d631da0-7d5e-497f-8c2e-37ee873ec477'),
-  ('f9a7fcaa-0be0-43b5-890a-dad7522d3724', '2023-06-07 09:00:00', '2023-06-07 11:00:00', CURRENT_TIMESTAMP, NULL, '57d7e1c9-22b1-4bce-97e2-b4ef9c4f4f26', 'db2cbe27-4a23-4ee9-b46f-1e1f70c337f0', '1801be82-fbd1-4f6f-a4d2-28cdd48eef85'),
-  ('e78b1905-5d75-4b59-bce4-67e4d7c5b4e1', '2023-06-07 13:00:00', '2023-06-07 15:00:00', CURRENT_TIMESTAMP, NULL, '248a767e-fb11-40f1-9b95-9d3c2621c0ed', 'ba74d97c-3c52-4f32-85ad-7346d519c9cc', '88eb85e5-9fa3-4389-9b92-3e83c5d73ef1'),
-  ('2e8ad7e3-d7b6-4d4e-9c84-0f73bb299e61', '2023-06-07 11:00:00', '2023-06-07 13:00:00', CURRENT_TIMESTAMP, NULL, '3b365fa1-1534-4ae0-8ee1-582b6cc930ab', '32fb6ff6-86e6-4f41-8a8e-2f79c2a88c59', '960fe06c-7e8f-4b82-af9a-cf927fbaf4a9');
-
-
-
-
-
-
-
-
-
-
-
-
+('3dcee5c3-16e3-4be4-a8e4-0fb0c2a4e13c', '2023-06-26 10:00:00', NULL, '2023-06-26 10:00:00', NULL, '3dcee5c3-16e3-4be4-a8e4-0fb0c2a4e13c', '3dcee5c3-16e3-4be4-a8e4-0fb0c2a4e13c', 'zdcee5c3-16e3-4be4-a8e4-0fb0c2a4e13c'),
+('zd5b7c1f-12c9-4fd7-9c5c-4eb228a8c456', '2023-06-26 11:30:00', NULL, '2023-06-26 11:30:00', NULL, 'fd5b7c1f-12c9-4fd7-9c5c-4eb228a8c456', 'fd5b7c1f-12c9-4fd7-9c5c-4eb228a8c456', 'zd5b7c1f-12c9-4fd7-9c5c-4eb228a8c456'),
+('8b4c1c27-73fb-4a67-a8cd-ff77e96fc0e9', '2023-06-26 12:45:00', NULL, '2023-06-26 12:45:00', NULL, '8b4c1c27-73fb-4a67-a8cd-ff77e96fc0e9', '8b4c1c27-73fb-4a67-a8cd-ff77e96fc0e9', 'zb4c1c27-73fb-4a67-a8cd-ff77e96fc0e9'),
+('zaa869c4-4d6a-4030-b2c7-50e6be8d8579', '2023-06-26 14:15:00', NULL, '2023-06-26 14:15:00', NULL, '2aa869c4-4d6a-4030-b2c7-50e6be8d8579', '2aa869c4-4d6a-4030-b2c7-50e6be8d8579', 'zaa869c4-4d6a-4030-b2c7-50e6be8d8579'),
+('95e6b1ce-0495-4b6d-9f62-9c5e9cc6a7a3', '2023-06-26 15:30:00', NULL, '2023-06-26 15:30:00', NULL, '95e6b1ce-0495-4b6d-9f62-9c5e9cc6a7a3', '95e6b1ce-0495-4b6d-9f62-9c5e9cc6a7a3', 'z5e6b1ce-0495-4b6d-9f62-9c5e9cc6a7a3'),
+('3zcee5c3-16e3-4be4-a8e4-0fb0c2a4e13c', '2023-06-26 16:45:00', NULL, '2023-06-26 16:45:00', NULL, '3dcee5c3-16e3-4be4-a8e4-0fb0c2a4e13c', '3dcee5c3-16e3-4be4-a8e4-0fb0c2a4e13c', 'zdcee5c3-16e3-4be4-a8e4-0fb0c2a4e13c'),
+('zz5b7c1f-12c9-4fd7-9c5c-4eb228a8c456', '2023-06-26 18:00:00', NULL, '2023-06-26 18:00:00', NULL, 'fd5b7c1f-12c9-4fd7-9c5c-4eb228a8c456', 'fd5b7c1f-12c9-4fd7-9c5c-4eb228a8c456', 'zd5b7c1f-12c9-4fd7-9c5c-4eb228a8c456'),
+('zb4c1c27-73fb-4a67-a8cd-ff77e96fc0e9', '2023-06-26 19:15:00', NULL, '2023-06-26 19:15:00', NULL, '8b4c1c27-73fb-4a67-a8cd-ff77e96fc0e9', '8b4c1c27-73fb-4a67-a8cd-ff77e96fc0e9', 'zb4c1c27-73fb-4a67-a8cd-ff77e96fc0e9'),
+('2aa869c4-4d6a-4030-b2c7-50e6be8d8579', '2023-06-26 20:30:00', NULL, '2023-06-26 20:30:00', NULL, '2aa869c4-4d6a-4030-b2c7-50e6be8d8579', '2aa869c4-4d6a-4030-b2c7-50e6be8d8579', 'zaa869c4-4d6a-4030-b2c7-50e6be8d8579'),
+('z5e6b1ce-0495-4b6d-9f62-9c5e9cc6a7a3', '2023-06-26 21:45:00', NULL, '2023-06-26 21:45:00', NULL, '95e6b1ce-0495-4b6d-9f62-9c5e9cc6a7a3', '95e6b1ce-0495-4b6d-9f62-9c5e9cc6a7a3', 'z5e6b1ce-0495-4b6d-9f62-9c5e9cc6a7a3'),
+('zdcee5c3-16e3-4be4-a8e4-0fb0c2a4e13c', '2023-06-26 23:00:00', NULL, '2023-06-26 23:00:00', NULL, '3dcee5c3-16e3-4be4-a8e4-0fb0c2a4e13c', '3dcee5c3-16e3-4be4-a8e4-0fb0c2a4e13c', 'zdcee5c3-16e3-4be4-a8e4-0fb0c2a4e13c'),
+('fd5b7c1f-12c9-4fd7-9c5c-4eb228a8c456', '2023-06-27 10:30:00', NULL, '2023-06-27 10:30:00', NULL, 'fd5b7c1f-12c9-4fd7-9c5c-4eb228a8c456', 'fd5b7c1f-12c9-4fd7-9c5c-4eb228a8c456', 'zd5b7c1f-12c9-4fd7-9c5c-4eb228a8c456');
