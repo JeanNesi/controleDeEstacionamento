@@ -1,13 +1,13 @@
-
 import { Response, Request } from 'express';
-import { findClients } from '../../repositories/client';
+import { findClients, createClient } from '../../repositories/client';
 import { ErrorMessage } from '../../utils/error';
+
 
 class clientController {
     async getClient(req: Request, res: Response): Promise<void> {
 
         const clients = await findClients();
-
+        
         if (!Array.isArray(clients) || clients.length === 0) {
             res.status(404).json({
                 statusCode: 404,
@@ -35,6 +35,15 @@ class clientController {
         }));
 
         res.status(200).json(formattedClients);
+    }
+
+    async postClient(req: Request, res: Response): Promise<void> {
+
+        const { userId, planId, name, email, phoneNumber, cpf, gender, birthDate } = req.body
+        
+        const retorno = createClient({ userId, planId, name, email, phoneNumber, cpf, gender, birthDate })
+
+        res.status(200).json(retorno);
     }
 }
 

@@ -1,1 +1,1 @@
-export * from './updateLastAccessService';
+export * from './findUsers';

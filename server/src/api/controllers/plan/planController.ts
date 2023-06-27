@@ -6,7 +6,7 @@ class planController {
     async getPlan(req: Request, res: Response): Promise<void> {
 
         const plans = await findPlans();
-
+        console.log(plans)
         if (!Array.isArray(plans) || plans.length === 0) {
             res.status(404).json({
                 statusCode: 404,
