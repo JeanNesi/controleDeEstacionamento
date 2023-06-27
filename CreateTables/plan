@@ -1,5 +1,5 @@
-CREATE TABLE plan (
-    id VARCHAR(MAX) NOT NULL,
+CREATE TABLE [plan] (
+    id VARCHAR(255) NOT NULL,
     amount DECIMAL(10,2) NOT NULL,
     finalDate DATETIME,
     createdAt DATETIME NOT NULL CONSTRAINT plan_createdAt_df DEFAULT CURRENT_TIMESTAMP,
