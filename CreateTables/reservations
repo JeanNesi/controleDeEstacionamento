@@ -1,12 +1,12 @@
 CREATE TABLE reservations (
-    id VARCHAR(MAX) NOT NULL,
+    id VARCHAR(255) NOT NULL,
     startTime DATETIME NOT NULL,
     endTime DATETIME ,
-    createdAt DATETIME,
+    createdAt DATETIME CONSTRAINT reservations_createdAt_df DEFAULT CURRENT_TIMESTAMP,
     updatedAt DATETIME,
-    vehicleId VARCHAR(MAX) NOT NULL,
-    parkingId VARCHAR(MAX) NOT NULL,
-    clientId VARCHAR(MAX),
+    vehicleId VARCHAR(255) NOT NULL,
+    parkingId VARCHAR(255) NOT NULL,
+    clientId VARCHAR(255),
 
     CONSTRAINT reservations_pkey PRIMARY KEY CLUSTERED (id)
 );
