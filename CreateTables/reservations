@@ -4,8 +4,8 @@ CREATE TABLE reservations (
     endTime DATETIME ,
     createdAt DATETIME,
     updatedAt DATETIME,
-    vehicleId VARCHAR(1000) NOT NULL,
-    parkingId VARCHAR(1000) NOT NULL,
-    clientId NVARCHAR(1000),
+    vehicleId VARCHAR(MAX) NOT NULL,
+    parkingId VARCHAR(MAX) NOT NULL,
+    clientId VARCHAR(MAX),
   
 );
